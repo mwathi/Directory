@@ -1,0 +1,34 @@
+<?php
+
+class Cities extends Doctrine_Record {
+
+    public function setTableDefinition() {
+        $this -> hasColumn('City_name', 'varchar', 25);
+        $this -> hasColumn('Coordinate', 'varchar', 25);
+    }
+
+    public function setUp() {
+        $this -> hasMany('Businesses as Business', array('local' => 'id', 'foreign' => 'city'));
+        $this -> setTableName('cities');
+    }//end setUp
+
+    public function getAll() {
+        $query = Doctrine_Query::create() -> select("*") -> from("cities");
+        $cityData = $query -> execute();
+        return $cityData;
+    }//end getall
+
+    public function getIdName() {
+        $query = Doctrine_Query::create() -> select("id,City_name") -> from("cities");
+        $cityData = $query -> execute();
+        return $cityData;
+    }//end getall
+
+    public function getAllHydrated() {
+        $query = Doctrine_Query::create() -> select("City_name,Coordinate") -> from("cities");
+        $cityData = $query -> execute(array(), Doctrine::HYDRATE_ARRAY);
+        return $cityData;
+    }
+
+}
+?>
