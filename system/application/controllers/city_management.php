@@ -12,11 +12,31 @@ class City_Management extends Controller{
     public function listing(){
         $data = array();
         $data['settings_view'] = "cities_v";
-        $data['city_details'] = Cities::getAllHydrated();
-        $this -> table -> set_heading(array('id', 'City Name', 'Coordinate'));
+        $data['city_details'] = Cities::getAll();
         $this -> base_params($data);
     }//end listing
     
+    public function add() {
+        $data['title'] = "City Management::Add New City";
+        $data['quick_link'] = "new_city";
+        $data['settings_view'] = "add_city_view";
+        $this -> base_params($data);
+    }
+     public function delete($id) {
+        $this -> load -> database();
+        $sql = 'delete from cities where id =' . $id . ' ';
+        $query = $this -> db -> query($sql);
+        redirect("city_management/listing", "refresh");
+    }//end save
+
+    public function edit_city($id) {
+        $city = Cities::getCity($id);
+        $data['city'] = $city[0];
+        $data['title'] = "City Management";
+        $data['settings_view'] = "add_cities_view";
+        $data['quick_link'] = "new_city";
+        $this -> base_params($data);
+    }
     public function save(){
         $valid = $this -> _validate_submission();
         if($valid == false){

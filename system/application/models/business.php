@@ -12,21 +12,21 @@ class Businesses extends Doctrine_Record {
     }
 
     public function setUp() {
-        
+
         $this -> hasOne('Cities', array('local' => 'city', 'foreign' => 'id'));
-        $this -> setTableName('businesses');
+        $this -> setTableName('Businesses');
         $this -> hasOne('Categories', array('local' => 'category', 'foreign' => 'id'));
     }//end setUp
 
     public function getAll() {
-        $query = Doctrine_Query::create() -> select("*") -> from("businesses");
+        $query = Doctrine_Query::create() -> select("*") -> from("Businesses");
         $businessData = $query -> execute();
         return $businessData;
     }//end getall
 
-    public function getAllHydrated() {
-        $query = Doctrine_Query::create() -> select("b.Business_name,b.Title,c.City_name,b.Coordinate,d.Category_name") -> from("businesses b,b.Cities c,b.Categories d");
-        $businessData = $query -> execute(array(), Doctrine::HYDRATE_ARRAY);
+    public function getBusiness($id) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Businesses") -> where("id = '$id'");
+        $businessData = $query -> execute();
         return $businessData;
     }
 

@@ -2,41 +2,41 @@
 <div class="upper_footer">
     <div class="container clearfix">
     <ul class="footer_nav">
-         <h4>GitHub</h4>
-         <li><a href="https://github.com/about">About</a></li>
-         <li><a href="https://github.com/blog">Blog</a></li>
-         <li><a href="https://github.com/features">Features</a></li>
-         <li><a href="https://github.com/contact">Contact &amp; Support</a></li>
-         <li><a href="https://github.com/training">Training</a></li>
-         <li><a href="http://enterprise.github.com/">GitHub Enterprise</a></li>
-         <li><a href="http://status.github.com/">Site Status</a></li>
+         <h4>Rwanda Business Directory</h4>
+         <li><a href="">A</a></li>
+         <li><a href="">B</a></li>
+         <li><a href="">C</a></li>
+         <li><a href="">D</a></li>
+         <li><a href="">D</a></li>
+         <li><a href="">E</a></li>
+         <li><a href="">F</a></li>
     </ul>
      <ul class="footer_nav">
          <h4>Clients</h4>
-         <li><a href="http://mac.github.com/">GitHub for Mac</a></li>
-         <li><a href="http://windows.github.com/">GitHub for Windows</a></li>
-         <li><a href="http://eclipse.github.com/">GitHub for Eclipse</a></li>
-         <li><a href="http://mobile.github.com/">GitHub Mobile Apps</a></li>
+         <li><a href="">G</a></li>
+         <li><a href="">H</a></li>
+         <li><a href="">I</a></li>
+         <li><a href="">J</a></li>
        </ul>
 
        <ul class="footer_nav">
          <h4>Tools</h4>
-         <li><a href="http://get.gaug.es/">Gauges: Web analytics</a></li>
-         <li><a href="http://speakerdeck.com">Speaker Deck: Presentations</a></li>
-         <li><a href="https://gist.github.com">Gist: Code snippets</a></li>
+         <li><a href="">K</a></li>
+         <li><a href="">L</a></li>
+         <li><a href="">M</a></li>
 
-         <h4 class="second">Extras</h4>
-         <li><a href="http://jobs.github.com/">Job Board</a></li>
-         <li><a href="http://shop.github.com/">GitHub Shop</a></li>
-         <li><a href="http://octodex.github.com/">The Octodex</a></li>
+         <h4 class="second">X</h4>
+         <li><a href="">N</a></li>
+         <li><a href="">O</a></li>
+         <li><a href="">P</a></li>
        </ul>
 
        <ul class="footer_nav">
-         <h4>Documentation</h4>
-         <li><a href="http://help.github.com/">GitHub Help</a></li>
-         <li><a href="http://developer.github.com/">Developer API</a></li>
-         <li><a href="http://github.github.com/github-flavored-markdown/">GitHub Flavored Markdown</a></li>
-         <li><a href="http://pages.github.com/">GitHub Pages</a></li>
+         <h4>Y</h4>
+         <li><a href="">Q</a></li>
+         <li><a href="">R</a></li>
+         <li><a href="">S</a></li>
+         <li><a href="">T</a></li>
        </ul>
        </div>
 </div>

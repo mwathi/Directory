@@ -38,8 +38,9 @@ if (isset($styles)) {
 <body>
     <div id="search">
         <div id="searchcontents">
-            <input type="text" id="searchfield" name="searchfield" placeholder="Enter any search term here"/>
-            <input type="submit" value="Search" id="submitsearch" name="submit"/>
+            <input type="text" id="searchwhat" name="searchwhat" placeholder="What are you looking for?" class="searchfield"/>
+            <input type="text" id="searchwhere" name="searchwhere" placeholder="Where is it located?" class="searchfield"/>
+            <input type="submit" value="FIND" id="submitsearch" name="submit"/>
         </div>
     </div> 
     <div id="wrapper">

@@ -29,6 +29,11 @@ class Categories extends Doctrine_Record {
         $categoryData = $query -> execute();
         return $categoryData;
     }//end getall
-
+    
+    public function getCategory($id) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Categories") -> where("id = '$id'");
+        $categoryData = $query -> execute();
+        return $categoryData;
+    }    
 }
 ?>

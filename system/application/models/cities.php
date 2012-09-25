@@ -30,5 +30,11 @@ class Cities extends Doctrine_Record {
         return $cityData;
     }
 
+    public function getCity($id) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Cities") -> where("id = '$id'");
+        $cityData = $query -> execute();
+        return $cityData;
+    }
+
 }
 ?>

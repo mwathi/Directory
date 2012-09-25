@@ -3,8 +3,9 @@
 class Users extends Doctrine_Record {
 
 	public function setTableDefinition() {
-		$this -> hasColumn('Name', 'varchar', 35);
-		$this -> hasColumn('Username', 'varchar', 15);
+		$this -> hasColumn('Name', 'varchar', 40);
+		$this -> hasColumn('Username', 'varchar', 25);
+        $this -> hasColumn('Password', 'varchar', 25);
 		$this -> hasColumn('Email', 'varchar', 35); 
 	}
 
@@ -23,6 +24,12 @@ class Users extends Doctrine_Record {
 		$userData = $query -> execute(array(), Doctrine::HYDRATE_ARRAY);
 		return $userData;
 	}
+    
+    public function getUsers($id) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Users") -> where("id = '$id'");
+        $cityData = $query -> execute();
+        return $cityData;
+    }
 
 }
 ?>
