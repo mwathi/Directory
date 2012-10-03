@@ -1,7 +1,7 @@
 <div id="space"></div>
 <div align="center">
     <div id="space"></div>
-    <div id="loginbar"><span class="loginbarother">Select your business of choice from the list below &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <img id="facebook" src="<?php echo base_url().'system/Images/facebook-login.png'?>" />&nbsp;&nbsp;&nbsp;&nbsp; Advertise with Us&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;Rwanda Business Directory Log in | </span> </div>
+    <div id="loginbar"><div id="space"></div><span class="loginbarother">Select your business of choice from the list below &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <img id="facebook" src="<?php echo base_url().'system/Images/facebook-login.png'?>" />&nbsp;&nbsp;&nbsp;&nbsp; Advertise with Us&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;Rwanda Business Directory Log in | </span> </div>
     <div id="space"></div>
     <div class="projects">
 

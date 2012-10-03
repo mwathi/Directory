@@ -29,6 +29,15 @@ if (isset($styles)) {
 }
 ?>  
 
+<script>
+$(document).ready(function() {
+  document.getElementById("searchwhat").value = "";
+});
+$(document).ready(function() {
+  document.getElementById("searchwhere").value = "";
+});
+</script>
+
 </head>
 <div id="header">
     <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
@@ -38,13 +47,13 @@ if (isset($styles)) {
 </div>
 <body>
     <div id="search">
-        <?php echo form_open('Home_Controller/search');?>
+        <?php echo form_open('home_Controller/search');?>
         <div id="searchcontents">
             <div id="logo">
                 <h3><a href="<?php echo base_url() ?>" style="color: #000"><span style="font-weight: normal">Rwanda Business Directory</span> </a></h3>
             </div>
             <?php echo form_input(array('name' => 'q', 'id' => 'searchwhat','placeHolder' => 'What are you looking for? e.g. Hilton', 'value' => $search_terms, 'class' => 'searchfield')); ?>
-            <input type="text" id="searchwhere" name="searchwhere" placeholder="Where is it located? e.g. Kigali" class="searchfield"/>     
+            <?php echo form_input(array('name' => 'r', 'id' => 'searchwhere','placeHolder' => 'Where is it located? e.g. Kigali', 'value' => $search_terms2, 'class' => 'searchfield')); ?>
             <?php echo form_submit(array('name'=>'search','value'=>'FIND','id'=>'submitsearch')); ?>
         </div>
     <?php echo form_close(); ?>
