@@ -3,23 +3,36 @@
 class Category_Management extends Controller {
     function __construct() {
         parent::__construct();
+        $this -> load -> library("pagination");
     }//end constructor
 
     public function index() {
         $this -> listing();
     }//end index
 
-    public function listing() {
-        $data = array();
-        $data['settings_view'] = "categories_v";
-        $data['category_details'] = Categories::getAll();
-        $this -> base_params($data);
+    public function listing($offset = 0) {
+        $items_per_page = 20;
+        $number_of_categories = Categories::getTotalNumber();
+        $categories = Categories::getPagedCategories($offset, $items_per_page);
+        if ($number_of_categories > $items_per_page) {
+            $config['base_url'] = base_url() . "category_management/listing/";
+            $config['total_rows'] = $number_of_categories;
+            $config['per_page'] = $items_per_page;
+            $config['uri_segment'] = 3;
+            $config['num_links'] = 5;
+            $this -> pagination -> initialize($config);
+            $data['pagination'] = $this -> pagination -> create_links();
+        }
+        $data['categories'] = $categories;
+        $data['title'] = "Category Management::All Categories";
+        $data['module_view'] = "categories_v";
+        $this -> base_params($data);        
     }//end listing
 
     public function add() {
         $data['title'] = "Category Management::Add New Category";
         $data['quick_link'] = "new_category";
-        $data['settings_view'] = "add_category_view";
+        $data['module_view'] = "add_category_view";
         $this -> base_params($data);
     }
 
@@ -33,7 +46,7 @@ class Category_Management extends Controller {
             $category = $category[0];
 
         } else {
-            $category = new Category();
+            $category = new Categories();
         }
 
         $valid = $this -> _validate_submission();
@@ -59,7 +72,7 @@ class Category_Management extends Controller {
         $category = Categories::getCategory($id);
         $data['category'] = $category[0];
         $data['title'] = "Category Management";
-        $data['settings_view'] = "add_category_view";
+        $data['module_view'] = "add_category_view";
         $data['quick_link'] = "new_category";
         $this -> base_params($data);
     }
@@ -73,12 +86,8 @@ class Category_Management extends Controller {
     public function base_params($data) {
         $data['styles'] = array("jquery-ui.css");
         $data['scripts'] = array("jquery-ui.js");
-        $data['quick_link'] = "categories";
-        $data['title'] = "System Settings";
-        $data['content_view'] = "settings_v";
-        $data['banner_text'] = "Rwanda Business Directory Settings";
-        $data['link'] = "settings_management";
-
+        $data['quick_link'] = "category_management";
+        $data['content_view'] = "admin_view";
         $this -> load -> view('admin_template', $data);
     }//end base_params
 

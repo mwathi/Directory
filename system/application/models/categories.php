@@ -34,6 +34,20 @@ class Categories extends Doctrine_Record {
         $query = Doctrine_Query::create() -> select("*") -> from("Categories") -> where("id = '$id'");
         $categoryData = $query -> execute();
         return $categoryData;
-    }    
+    }   
+  
+    public static function getTotalNumber() {
+        $query = Doctrine_Query::create() -> select("COUNT(*) as Total_Categories") -> from("Categories");
+        $count = $query -> execute();
+        return $count[0] -> Total_Categories;
+    }
+
+    public function getPagedCategories($offset, $items) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Categories")-> orderBy("Category_name") -> offset($offset) -> limit($items);
+        $categoryData = $query -> execute();
+        return $categoryData;
+    }
+
+   
 }
 ?>

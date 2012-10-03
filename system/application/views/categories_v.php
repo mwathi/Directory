@@ -3,13 +3,22 @@
     <div align="center">
         <?php echo validation_errors('<p class="error">', '</p>'); ?>
         <div>
+            <div>
+            <?php if (isset($pagination)):
+?>
+				<div style="width:450px; margin:1 auto 60px auto">
+					<?php echo $pagination;
+					?>
+				</div>
+				<?php endif;
+				?>
         <table class="reporttable">
             <tr class="yellow">
                 <th>Category</th>
                 <th>Coordinate</th>         
             </tr>
                     <?php
-                    foreach($category_details as $category_data){?>
+                    foreach($categories as $category_data){?>
                         <tr>                                                                        
                         <td><?php echo $category_data -> Category_name ?></td>
                         <td><?php echo $category_data -> Description ?></td>
@@ -19,7 +28,12 @@
                         <?php
                         }
                     ?>
-        </table>
+        </table><?php if (isset($pagination)):
+?>
+<div style="width:450px; margin:1 auto 60px auto">
+    <?php echo $pagination; ?>
+</div>
+<?php endif; ?>
     </div>
 
     </div>

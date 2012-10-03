@@ -79,7 +79,7 @@ $autoload['plugin'] = array('doctrine');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('application');
 
 
 /*

@@ -3,7 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $title; ?></title>
-<link href="<?php echo base_url().'system/CSS/style.css'?>" type="text/css" rel="stylesheet"/> 
+<link href="<?php echo base_url().'system/CSS/style.css'?>" type="text/css" rel="stylesheet"/>
+ 
 <link href="<?php echo base_url().'system/CSS/jquery-ui.css'?>" type="text/css" rel="stylesheet"/> 
 <script src="<?php echo base_url().'system/Scripts/jquery.js'?>" type="text/javascript"></script> 
 <script src="<?php echo base_url().'system/Scripts/jquery-ui.js'?>" type="text/javascript"></script> 
@@ -13,7 +14,7 @@
 error_reporting(0);
 if (isset($scripts)) {
     foreach ($scripts as $script) {
-        echo "<script src=\"" . base_url() . "Scripts/" . $script . "\" type=\"text/javascript\"></script>";
+        echo "<script src=\"" . base_url() . "system/Scripts/" . $script . "\" type=\"text/javascript\"></script>";
     }
 }
 ?>
@@ -23,7 +24,7 @@ if (isset($scripts)) {
 <?php
 if (isset($styles)) {
     foreach ($styles as $style) {
-        echo "<link href=\"" . base_url() . "CSS/" . $style . "\" type=\"text/css\" rel=\"stylesheet\"/>";
+        echo "<link href=\"" . base_url() . "system/CSS/" . $style . "\" type=\"text/css\" rel=\"stylesheet\"/>";
     }
 }
 ?>  

@@ -36,5 +36,17 @@ class Cities extends Doctrine_Record {
         return $cityData;
     }
 
+    public static function getTotalNumber() {
+        $query = Doctrine_Query::create() -> select("COUNT(*) as Total_Cities") -> from("Cities");
+        $count = $query -> execute();
+        return $count[0] -> Total_Cities;
+    }
+
+    public function getPagedCities($offset, $items) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Cities") -> orderBy("City_name") -> offset($offset) -> limit($items);
+        $cityData = $query -> execute();
+        return $cityData;
+    }
+
 }
 ?>

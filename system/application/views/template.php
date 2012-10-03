@@ -11,6 +11,7 @@
 
 <?php
 error_reporting(0);
+$this -> load -> helper(array('form','search'));
 if (isset($scripts)) {
     foreach ($scripts as $script) {
         echo "<script src=\"" . base_url() . "system/Scripts/" . $script . "\" type=\"text/javascript\"></script>";
@@ -30,18 +31,23 @@ if (isset($styles)) {
 
 </head>
 <div id="header">
-    <div id="menu-container">
-        <div id="space"></div>
-        <h3><a href="<?php echo base_url() ?>"><span style="color: red">R</span><span style="color: yellow">w</span><span style="color: green">a</span><span id="rwanda">nda Business Directory</span> </a></h3>
-    </div>
+    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
+<param name="movie" value="<?php echo base_url().'system/solveitservicesadvert.swf'?>" />
+<embed src="<?php echo base_url().'system/solveitservicesadvert.swf'?>" width="1030" height="80" name="test1" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+</object>
 </div>
 <body>
     <div id="search">
+        <?php echo form_open('Home_Controller/search');?>
         <div id="searchcontents">
-            <input type="text" id="searchwhat" name="searchwhat" placeholder="What are you looking for?" class="searchfield"/>
-            <input type="text" id="searchwhere" name="searchwhere" placeholder="Where is it located?" class="searchfield"/>
-            <input type="submit" value="FIND" id="submitsearch" name="submit"/>
+            <div id="logo">
+                <h3><a href="<?php echo base_url() ?>" style="color: #000"><span style="font-weight: normal">Rwanda Business Directory</span> </a></h3>
+            </div>
+            <?php echo form_input(array('name' => 'q', 'id' => 'searchwhat','placeHolder' => 'What are you looking for? e.g. Hilton', 'value' => $search_terms, 'class' => 'searchfield')); ?>
+            <input type="text" id="searchwhere" name="searchwhere" placeholder="Where is it located? e.g. Kigali" class="searchfield"/>     
+            <?php echo form_submit(array('name'=>'search','value'=>'FIND','id'=>'submitsearch')); ?>
         </div>
+    <?php echo form_close(); ?>
     </div> 
     <div id="wrapper">
     <div id="main_wrapper"> 
