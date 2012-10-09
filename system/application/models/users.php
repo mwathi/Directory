@@ -11,6 +11,7 @@ class Users extends Doctrine_Record {
 
 	public function setUp() {
 		$this -> setTableName('users');
+        $this -> hasMany('Businesses', array('local' => 'id', 'foreign' => 'owner'));
 	}//end setUp
 
 	public function getAll() {

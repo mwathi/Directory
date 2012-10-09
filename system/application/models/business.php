@@ -18,10 +18,11 @@ class Businesses extends Doctrine_Record {
         $this -> hasColumn('Mobile', 'varchar', 15);
         $this -> hasColumn('Email', 'varchar', 20);
         $this -> hasColumn('Website', 'varchar', 25);
+        $this -> hasColumn('Owner', 'int', 15);
     }
 
     public function setUp() {
-
+        $this -> hasOne('Users', array('local' => 'owner', 'foreign' => 'id'));
         $this -> hasOne('Cities', array('local' => 'city', 'foreign' => 'id'));
         $this -> setTableName('Businesses');
         $this -> hasOne('Categories', array('local' => 'category', 'foreign' => 'id'));
@@ -45,12 +46,23 @@ class Businesses extends Doctrine_Record {
         return $count[0] -> Total_Businesses;
     }
 
+    public static function getTotalNumberPersonal($dave) {
+        $query = Doctrine_Query::create() -> select("COUNT(*) as Total_Businesses") -> from("Businesses") -> where("Active = '0' AND Owner = '$dave' ");
+        $count = $query -> execute();
+        return $count[0] -> Total_Businesses;
+    }
+
     public function getPagedBusinesses($offset, $items) {
-        $query = Doctrine_Query::create() -> select("*") -> from("Businesses")-> orderBy("Business_name") -> offset($offset) -> limit($items);
+        $query = Doctrine_Query::create() -> select("*") -> from("Businesses") -> orderBy("Business_name") -> offset($offset) -> limit($items);
+        $businessData = $query -> execute();
+        return $businessData;
+    }
+    
+    public function getPagedBusinessesPersonal($offset, $items,$dave) {
+        $query = Doctrine_Query::create() -> select("*") -> from("Businesses") -> where("Owner = '$dave' ") -> orderBy("Business_name") -> offset($offset) -> limit($items);
         $businessData = $query -> execute();
         return $businessData;
     }
 
-    
 }
 ?>

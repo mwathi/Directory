@@ -1,21 +1,27 @@
 <?php
 
-class Business_Management extends Controller {
+class Personal_Controller extends Controller {
     function __construct() {
         parent::__construct();
         $this -> load -> library("pagination");
     }//end constructor
 
     public function index() {
-        $this -> listing();
+
     }//end index
 
-    public function listing($offset = 0) {
+    public function page() {
+        $data['title'] = "Rwanda Business Directory Login Page";
+        $data['content_view'] = "personal_main_v";
+        $this -> base_params($data);
+    }
+    
+    public function personal_business_listing($offset = 0){
         $items_per_page = 10;
-        $number_of_businesses = Businesses::getTotalNumber();
-        $businesses = Businesses::getPagedBusinesses($offset, $items_per_page);
+        $number_of_businesses = Businesses::getTotalNumberPersonal($this->session->userdata('userid'));
+        $businesses = Businesses::getPagedBusinessesPersonal($offset, $items_per_page,$this->session->userdata('userid'));
         if ($number_of_businesses > $items_per_page) {
-            $config['base_url'] = base_url() . "business_management/listing/";
+            $config['base_url'] = base_url() . "personal_controller/personal_business_listing/";
             $config['total_rows'] = $number_of_businesses;
             $config['per_page'] = $items_per_page;
             $config['uri_segment'] = 3;
@@ -25,20 +31,12 @@ class Business_Management extends Controller {
         }
         $data['businesses'] = $businesses;
         $data['title'] = "Business Management::All Businesses";
-        $data['module_view'] = "business_v";
-        $this -> base_params($data);
-    }//end listing
-
-    public function add() {
-        $data['title'] = "Business Management::Add New Business";
-        $data['quick_link'] = "new_business";
-        $data['module_view'] = "add_business_view";
-        $data['city_data'] = Cities::getIdName();
-        $data['category_data'] = Categories::getIdName();
+        $data['content_view'] = "personal_business_v";
         $this -> base_params($data);
     }
-
+    
     public function save() {
+        $owner = $this->session->userdata('userid');
         $business_name = $this -> input -> post("business");
         $coordinates = $this -> input -> post("coordinates");
         $city = $this -> input -> post("city");
@@ -64,8 +62,9 @@ class Business_Management extends Controller {
         
         $valid = $this -> _validate_submission();
         if ($valid == false) {
-            $this -> listing();
+            $this -> personal_business_listing();
         } else {
+            $business -> Owner = $owner;
             $business -> Title = $business_name;
             $business -> Business_name = $business_name;
             $business -> Coordinate = $coordinates;
@@ -82,39 +81,29 @@ class Business_Management extends Controller {
             $business -> Website = $website;
 
             $business -> save();
-            redirect("business_management/listing");
+            redirect("personal_controller/personal_business_listing");
         }//end else
     }//end save
-
-    public function delete($id) {
-        $this -> load -> database();
-        $sql = 'delete from businesses where id =' . $id . ' ';
-        $query = $this -> db -> query($sql);
-        redirect("business_management/listing", "refresh");
-    }//end save
-
-    public function edit_business($id) {
-        $business = Businesses::getBusiness($id);
-        $data['city_data'] = Cities::getIdName();
-        $data['category_data'] = Categories::getIdName();
-        $data['business'] = $business[0];
-        $data['title'] = "Business Management";
-        $data['module_view'] = "add_business_view";
-        $data['quick_link'] = "new_business";
-        $this -> base_params($data);
-    }
-
+    
     private function _validate_submission() {
         $this -> form_validation -> set_rules('business', 'Business Name', 'trim|required|min_length[1]');
         return $this -> form_validation -> run();
     }//end validate_submission
+    
+    
+    public function add() {
+        $data['title'] = "Rwanda Business Directory Add Business Page";
+        $data['content_view'] = "personal_add_business_view";
+              $data['city_data'] = Cities::getIdName();
+        $data['category_data'] = Categories::getIdName();
+        $this -> base_params($data);
+    }
 
     public function base_params($data) {
-        $data['scripts'] = array("jquery-ui.js", "tab.js");    
-        $data['styles'] = array("jquery-ui.css","tab.css","pagination.css");
-        $data['quick_link'] = "business_management";
-        $data['content_view'] = "admin_view";
-        $this -> load -> view('admin_template', $data);
+        $data['scripts'] = array("jquery-ui.js");
+        $data['styles'] = array("jquery-ui.css");
+
+        $this -> load -> view('personal_view', $data);
     }//end base_params
 
 }//end class

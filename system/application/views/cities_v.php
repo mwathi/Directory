@@ -5,7 +5,7 @@
         <div>
             <?php if (isset($pagination)):
 ?>
-<div style="width:450px; margin:1 auto 60px auto">
+<div style="width:450px; margin:1 auto 60px auto" class="pagination">
     <?php echo $pagination; ?>
 </div>
 <?php endif; ?>
@@ -28,7 +28,9 @@
         </table>
         <?php if (isset($pagination)):
 ?>
-<div style="width:450px; margin:1 auto 60px auto">
+<div style="width:450px; margin:1 auto 60px auto" class="pagination">
+    <div id="space"></div>
+    <div id="space"></div>
     <?php echo $pagination; ?>
 </div>
 <?php endif; ?>

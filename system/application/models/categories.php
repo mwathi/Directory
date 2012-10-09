@@ -5,6 +5,7 @@ class Categories extends Doctrine_Record {
     public function setTableDefinition() {
         $this -> hasColumn('Category_name', 'varchar', 25);
         $this -> hasColumn('Description', 'varchar', 250);
+        $this -> hasColumn('Visits', 'int', 10);
     }
 
     public function setUp() {
@@ -30,6 +31,12 @@ class Categories extends Doctrine_Record {
         return $categoryData;
     }//end getall
     
+    public function getName() {
+        $query = Doctrine_Query::create() -> select("Category_name") -> from("categories") -> limit('10');
+        $categoryData = $query -> execute();
+        return $categoryData;
+    }//end getall
+    
     public function getCategory($id) {
         $query = Doctrine_Query::create() -> select("*") -> from("Categories") -> where("id = '$id'");
         $categoryData = $query -> execute();
@@ -44,6 +51,12 @@ class Categories extends Doctrine_Record {
 
     public function getPagedCategories($offset, $items) {
         $query = Doctrine_Query::create() -> select("*") -> from("Categories")-> orderBy("Category_name") -> offset($offset) -> limit($items);
+        $categoryData = $query -> execute();
+        return $categoryData;
+    }
+    
+    public function getPopularCategories() {
+        $query = Doctrine_Query::create() -> select("Category_name") -> from("Categories")-> where("Visits > 0") -> limit('5');
         $categoryData = $query -> execute();
         return $categoryData;
     }

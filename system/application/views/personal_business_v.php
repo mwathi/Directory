@@ -1,5 +1,5 @@
 <div id="view_content">
-    <a class="action_button" id="new_business" href="<?php echo site_url("business_management/add"); ?>">New Business</a>
+    <a class="action_button" id="new_business" href="<?php echo site_url("personal_controller/add"); ?>">New Business</a>
     <div align="center">
         <?php echo validation_errors('<p class="error">', '</p>'); ?>
         <div>
@@ -29,8 +29,8 @@
                     foreach($businesses as $business_data){?>
                         <tr>                                                                        
                         <td><?php echo $business_data -> Business_name ?></td>
-                        <td><?php echo $business_data -> Categories -> Category_name ?></td>     
-                        <td><?php echo $business_data -> Users -> Name ?></td>                                             
+                        <td><?php echo $business_data -> Categories -> Category_name ?></td>  
+                        <td><?php echo $business_data -> Users -> Name ?></td>                                                
                         <td><?php echo $business_data -> Coordinate ?></td>                       
                         <td><?php echo $business_data -> Building ?></td>
                         <td><?php echo $business_data -> Floor ?></td>

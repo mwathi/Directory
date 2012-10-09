@@ -14,13 +14,27 @@ class Home_Controller extends Controller {
     }
 
     public function home() {
+        $data['userstuff'] = $this->session->userdata('names');
         $data['title'] = "System Home";
+        $data['categoryinformation'] = Categories::getName();
+        $data['populars'] = Categories::getPopularCategories();
         $data['content_view'] = "main_v";
         $data['link'] = "home";
         $this -> load -> view("template", $data);
     }
+    
+    private function check_isvalidated(){
+        if(! $this->session->userdata('validated')){
+            redirect('login');
+        }
+    }
+    
+    public function do_logout(){
+        $this->session->sess_destroy();
+        redirect('login');
+    }
 
-    function search($search_terms = '', $start = 0) {
+    function search($search_terms = '',$start = 0) {
         // If the form has been submitted, rewrite the URL so that the search
         // terms can be passed as a parameter to the action. Note that there
         // are some issues with certain characters here.
@@ -31,6 +45,7 @@ class Home_Controller extends Controller {
         }
 
         if ($search_terms) {
+            
             // Determine the number of results to display per page
             $results_per_page = $this -> config -> item('results_per_page');
 

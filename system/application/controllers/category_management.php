@@ -79,7 +79,7 @@ class Category_Management extends Controller {
 
     private function _validate_submission() {
         $this -> form_validation -> set_rules('category_name', 'Category Name', 'trim|required|min_length[1]|max_length[25]');
-        $this -> form_validation -> set_rules('description', 'Description', 'trim|required|min_length[5]|max_length[25]');
+        $this -> form_validation -> set_rules('description', 'Description', 'trim|required|min_length[5]|max_length[250]');
         return $this -> form_validation -> run();
     }//end validate_submission
 
