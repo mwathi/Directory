@@ -19,6 +19,9 @@ class Businesses extends Doctrine_Record {
         $this -> hasColumn('Email', 'varchar', 20);
         $this -> hasColumn('Website', 'varchar', 25);
         $this -> hasColumn('Owner', 'int', 15);
+        $this -> hasColumn('Getting_there', 'varchar', 400);
+        $this -> hasColumn('Company_information', 'varchar', 400);
+        $this -> hasColumn('Products_services', 'varchar', 400);
     }
 
     public function setUp() {

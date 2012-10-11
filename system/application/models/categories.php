@@ -32,7 +32,7 @@ class Categories extends Doctrine_Record {
     }//end getall
     
     public function getName() {
-        $query = Doctrine_Query::create() -> select("Category_name") -> from("categories") -> limit('10');
+        $query = Doctrine_Query::create() -> select("Category_name") -> from("categories");
         $categoryData = $query -> execute();
         return $categoryData;
     }//end getall

@@ -29,7 +29,7 @@ a {
 }
 #header {
 	height: 80px;
-	margin-left: 10%;
+	margin-left: 8%;
 	margin-right: 7%;
 	margin-top: -19px;
 	position: relative;
@@ -59,10 +59,11 @@ a {
 }
 
 /*end dialog*/
+
 #loginbar {
-	height: 30px;
-	margin-left: 22.3%;
-	margin-right: 15%;
+	height: 40px;
+	margin-left: 18%;
+	margin-right: 7%;
 	background: #FFFFFF;
 	/*-moz-box-shadow: 3px 3px 5px 6px #ccc;
 	 -webkit-box-shadow: 3px 3px 5px 6px #ccc;*/
@@ -96,11 +97,15 @@ a {
 	float: right;
 	margin-right: 8%;
 }
+#alotofcrap{
+	font-size: 15px;
+}
+
 #search {
-	margin-top: 1%;
-	margin-left: 10%;
+	margin-top: 0%;
+	margin-left: 8%;
 	margin-right: 7%;
-	height: 10%;
+	height: 15%;
 	background-color: #FFE600;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -128,7 +133,7 @@ a {
 #logo {
 	float: left;
 	margin-left: -10%;
-	margin-top: -1%;
+	margin-top: -3%;
 	margin-right: 1%;
 	font-weight: normal
 }
@@ -171,7 +176,7 @@ a {
 }
 .projects .project h3 {
 	font-size: 15px;
-	letter-spacing: -.04em;
+	letter-spacing: -.04px;
 	color: black;
 	font-weight: 400;
 }
@@ -181,7 +186,7 @@ a {
 	font-weight: normal;
 	padding: 0;
 	font-size: 10px;
-	letter-spacing: .16em;
+	letter-spacing: .16px;
 	margin: 0;
 	color: #948980;
 }
@@ -455,12 +460,13 @@ a {
 	color: #036;
 	background: #FFFFFF;
 }
+
 ::-webkit-input-placeholder {
 	font-size: 15px;
 	text-align: center;
 	font-family: Arial;
 }
-
+input:-moz-placeholder { color:#999; }
 #footer .container {
 	padding-top: 0px;
 	width: 700px;
@@ -477,7 +483,6 @@ a {
 	visibility: hidden;
 }
 #footer .upper_footer ul.footer_nav h4 {
-	margin-bottom: -5%;
 	border-bottom: thin solid #E1E1E1;
 	display: block;
 	-webkit-margin-before: 1.33em;
@@ -506,11 +511,11 @@ a {
 	position: relative;
 	float: left;
 	width: 164px;
-	margin: 20px 10px;
+	
 	display: block;
 	list-style-type: disc;
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
+	-webkit-margin-before: 1px;
+	-webkit-margin-after: 1px;
 	-webkit-margin-start: 0px;
 	-webkit-margin-end: 0px;
 	-webkit-padding-start: 40px;
@@ -568,12 +573,28 @@ a {
 	list-style-type: none
 }
 #searchresults ul :hover {
-	background-color: #E6E6E6;
+	background-color: #FFFFCC;
 	-webkit-transition: background-color 1s;
 	-moz-transition: background-color 1s;
 	transition: background-color 1s;
 }
-
+#moreinfosearchresults{
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 30%;
+	font-family: Calibri
+}
+#moreinfosearchresults ul {
+	list-style-type: none
+}
+#moreinfosearchresults .map {
+	margin-left: 50%;
+	margin-top: -18%;
+}
+textarea{
+	width: 250px;
+	height: 100px;
+}
 /*pagination*/
 #searchresults .pagination {
 	color: red

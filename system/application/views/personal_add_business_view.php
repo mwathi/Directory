@@ -14,6 +14,9 @@ if (isset($business)) {
     $email = $business -> Email;
     $website = $business -> Website;
     $business_id = $business -> id;
+    $company_information = $business -> Company_information;
+    $getting_there = $business -> Getting_there;
+    $products_services = $business -> Products_services;
 } else {
     $business_name = "";
     $city = "";
@@ -29,6 +32,9 @@ if (isset($business)) {
     $fax = "";
     $mobile = "";
     $email = "";
+    $company_information = "";
+    $getting_there = "";
+    $products_services = "";
 }
 $attributes = array('enctype' => 'multipart/form-data');
 echo form_open('personal_controller/save', $attributes);
@@ -163,6 +169,33 @@ echo validation_errors('
             echo form_input($data_search);
             ?></td>
         </tr>
+                <tr>
+            <td>Company Information</td>
+            <td><?php
+
+            $data_search = array('name' => 'company_information', 'value' => $company_information, 'class' => 'othertext');
+            echo form_textarea($data_search);
+            ?></td>
+        </tr>
+
+<tr>
+            <td>Getting There</td>
+            <td><?php
+
+            $data_search = array('name' => 'getting_there', 'value' => $getting_there, 'class' => 'othertext');
+            echo form_textarea($data_search);
+            ?></td>
+        </tr>
+
+<tr>
+            <td>Products and Services</td>
+            <td><?php
+
+            $data_search = array('name' => 'products_services', 'value' => $products_services, 'class' => 'othertext');
+            echo form_textarea($data_search);
+            ?></td>
+        </tr>
+
         <tr>
             <td><input name="submit" type="submit" value="Save Category" class="button" style="width: 100px; height: 30px; font-size: 13px"></td>
         </tr>

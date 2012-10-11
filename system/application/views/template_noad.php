@@ -30,25 +30,20 @@ if (isset($styles)) {
 ?>  
 
 <script>
-	$(document).ready(function() {
-		document.getElementById("searchwhat").value = "";
-	});
-	$(document).ready(function() {
-		document.getElementById("searchwhere").value = "";
-	}); 
+    $(document).ready(function() {
+        document.getElementById("searchwhat").value = "";
+    });
+    $(document).ready(function() {
+        document.getElementById("searchwhere").value = "";
+    }); 
 </script>
 
 </head>
-<div id="header">
-    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
-<param name="movie" value="<?php echo base_url().'system/solveitservicesadvert.swf'?>" />
-<embed src="<?php echo base_url().'system/solveitservicesadvert.swf'?>" width="1050" height="80" name="test1" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
-</object>
-</div>
+
 <body>
-    <div id="search">
+    <div id="search" style="margin-top: -8px">
         <?php echo form_open('home_controller/search'); ?>
-        <div id="searchcontents">
+        <div id="searchcontents" style="margin-top: -78px">
             <div id="logo">
                 <h3><a href="<?php echo base_url() ?>" style="color: #000"><span style="font-weight: normal">Rwanda <br /> Business <br /> Directory</span> </a></h3>
             </div>

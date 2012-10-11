@@ -53,6 +53,9 @@ class Business_Management extends Controller {
         $mobile = $this -> input -> post("mobile");
         $email = $this -> input -> post("email");
         $website = $this -> input -> post("website");
+        $company_information = $this -> input -> post("company_information");
+        $getting_there = $this -> input -> post("getting_there");
+        $products_services = $this -> input -> post("products_services");
         
                    
         if (strlen($business_id) > 0) {
@@ -80,6 +83,9 @@ class Business_Management extends Controller {
             $business -> Mobile = $mobile;
             $business -> Email = $email;
             $business -> Website = $website;
+            $business -> Company_information = $company_information;
+            $business -> Getting_there = $getting_there;
+            $business -> Products_services = $products_services;
 
             $business -> save();
             redirect("business_management/listing");

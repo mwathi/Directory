@@ -1,23 +1,33 @@
+
 <div id="space"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=395161260549523";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div align="center">
 	<div id="space"></div>
 	<div id="loginbar">
 	    
-		<div id="space"></div>
-		<span class="loginbarother">
+		<span class="loginbarother" id="loginbarother">
 		Select your business of choice from the list below &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;		
 		Advertise with Us&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
 		<?php
             if ($userstuff != NULL) {
                 ?>
-                <a href="<?php echo base_url().'personal_controller/page'?>"><?php echo "<span id=userstuff>" .$userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>
+                <a href="<?php echo base_url().'personal_controller/page'?>">Welcome <?php echo "<span id=userstuff>" .$userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>
             <?php
             } else {?>
                 <a href=<?php echo base_url().'login'?> id=loginlink> Rwanda Business Directory Log in </a> | </span>
-                <img id="facebook" src="<?php echo base_url().'system/Images/facebook-login.png'?>" />&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <?php
             }
 		?>
+    
+    <div class="fb-like" data-href="http://localhost/directory/home_controller" data-send="false" data-width="45" data-show-faces="false" data-action="recommend" data-font="lucida grande"></div>
 	</div>
 	<div id="space"></div>
 	<div class="projects">
@@ -31,10 +41,7 @@
                             echo "<li> <a href='home_controller/search/$categoryinfo->Category_name'> " . $categoryinfo -> Category_name . "</a></li>";
                         }
 						?>
-						<li>
-							<a href="" style="color: red">More</a>
-						</li>
-
+						
 					</ul> </span>
 			</div>
 			<div class="info">

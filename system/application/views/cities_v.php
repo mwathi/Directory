@@ -19,8 +19,8 @@
                         <tr>                                                                        
                         <td><?php echo $city_data -> City_name ?></td>
                         <td><?php echo $city_data -> Coordinate ?></td>
-                        <td><a href="<?php echo base_url()."City_Management/delete/".$city_data -> id ?>" onclick="return confirm("Are you sure you want to delete this business?")" >Delete</a></td>
-                        <td><a href="<?php echo base_url()."City_Management/edit_city/".$city_data -> id ?>">Edit</a></td>
+                        <td><a href="<?php echo base_url()."city_management/delete/".$city_data -> id ?>" onclick="return confirm("Are you sure you want to delete this business?")" >Delete</a></td>
+                        <td><a href="<?php echo base_url()."city_management/edit_city/".$city_data -> id ?>">Edit</a></td>
                         </tr>
                         <?php
                         }

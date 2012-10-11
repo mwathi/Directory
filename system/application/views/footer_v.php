@@ -6,10 +6,6 @@
          <li><a href="">A</a></li>
          <li><a href="">B</a></li>
          <li><a href="">C</a></li>
-         <li><a href="">D</a></li>
-         <li><a href="">D</a></li>
-         <li><a href="">E</a></li>
-         <li><a href="">F</a></li>
     </ul>
      <ul class="footer_nav">
          <h4>Clients</h4>

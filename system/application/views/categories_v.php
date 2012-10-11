@@ -22,8 +22,8 @@
                         <tr>                                                                        
                         <td><?php echo $category_data -> Category_name ?></td>
                         <td><?php echo $category_data -> Description ?></td>
-                        <td><a href="<?php echo base_url()."Category_Management/delete/".$category_data['id'] ?>">Delete</a></td>
-                        <td><a href="<?php echo base_url()."Category_Management/edit_category/".$category_data['id'] ?>">Edit</a></td>
+                        <td><a href="<?php echo base_url()."category_management/delete/".$category_data['id'] ?>">Delete</a></td>
+                        <td><a href="<?php echo base_url()."category_management/edit_category/".$category_data['id'] ?>">Edit</a></td>
                         </tr>
                         <?php
                         }

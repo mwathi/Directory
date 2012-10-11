@@ -14,7 +14,8 @@ class Home_Controller extends Controller {
     }
 
     public function home() {
-        $data['userstuff'] = $this->session->userdata('names');
+
+        $data['userstuff'] = $this -> session -> userdata('names');
         $data['title'] = "System Home";
         $data['categoryinformation'] = Categories::getName();
         $data['populars'] = Categories::getPopularCategories();
@@ -22,19 +23,19 @@ class Home_Controller extends Controller {
         $data['link'] = "home";
         $this -> load -> view("template", $data);
     }
-    
-    private function check_isvalidated(){
-        if(! $this->session->userdata('validated')){
+
+    private function check_isvalidated() {
+        if (!$this -> session -> userdata('validated')) {
             redirect('login');
         }
     }
-    
-    public function do_logout(){
-        $this->session->sess_destroy();
+
+    public function do_logout() {
+        $this -> session -> sess_destroy();
         redirect('login');
     }
 
-    function search($search_terms = '',$start = 0) {
+    function search($search_terms = '', $start = 0) {
         // If the form has been submitted, rewrite the URL so that the search
         // terms can be passed as a parameter to the action. Note that there
         // are some issues with certain characters here.
@@ -45,7 +46,7 @@ class Home_Controller extends Controller {
         }
 
         if ($search_terms) {
-            
+
             // Determine the number of results to display per page
             $results_per_page = $this -> config -> item('results_per_page');
 
@@ -67,8 +68,7 @@ class Home_Controller extends Controller {
             // Work out which results are being displayed
             $first_result = $start + 1;
             $last_result = min($start + $results_per_page, $total_results);
-        }
-        elseif ($search_terms2) {
+        } elseif ($search_terms2) {
             // Determine the number of results to display per page
             $results_per_page = $this -> config -> item('results_per_page');
 
@@ -115,6 +115,35 @@ class Home_Controller extends Controller {
 
         // Initialise the pagination class, passing in some minimum parameters
         $this -> pagination -> initialize(array('base_url' => site_url($url), 'uri_segment' => 4, 'total_rows' => $total_results, 'per_page' => $results_per_page));
+    }
+
+    function moreInfoSearch($search_terms = '') {
+        // If the form has been submitted, rewrite the URL so that the search
+        // terms can be passed as a parameter to the action. Note that there
+        // are some issues with certain characters here.
+        if ($this -> input -> post('q')) {
+            redirect('/home_controller/moreInfoSearch/' . $this -> input -> post('q'));
+        } elseif ($this -> input -> post('r')) {
+            redirect('/home_controller/moreInfoSearch/' . $this -> input -> post('r'));
+        }
+
+        if ($search_terms) {
+
+            $this -> load -> model('search');
+            $results = $this -> search -> moreInfoFind($search_terms);        
+        } elseif ($search_terms2) {
+            $this -> load -> model('search');
+            $results = $this -> search -> moreInfoFind($search_terms2);
+        }
+
+        $data['content_view'] = "searched_more_v";
+        $data['search_terms'] = $search_terms;
+        $data['search_terms2'] = $search_terms2;
+        $data['results'] = @$results;
+        $this -> load -> view('template_noad', $data);
+
+        // Enable the profiler
+        $this->output->enable_profiler(TRUE);
     }
 
 }
