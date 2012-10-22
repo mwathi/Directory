@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 class Personal_Controller extends Controller {
     function __construct() {
         parent::__construct();
@@ -72,6 +72,21 @@ class Personal_Controller extends Controller {
         if ($valid == false) {
             $this -> personal_business_listing();
         } else {
+            
+            $config['upload_path'] = '/xampp/htdocs/Directory/system/Images/';
+            $config['allowed_types'] = 'jpeg|jpg';
+            $config['max_size'] = '10000';
+
+            $this -> load -> library('upload', $config);
+            if (!$this -> upload -> do_upload()) {
+                $data['error'] = array('error' => $this -> upload -> display_errors());
+                $this -> load -> view('personal_add_business_view', $data);
+            } else {
+                $data = array('upload_data' => $this -> upload -> data());
+                //$this -> base_params($data);
+            }
+            $pic=($_FILES['userfile']['name']);
+            $business -> Image = $pic;
             $business -> Owner = $owner;
             $business -> Title = $business_name;
             $business -> Business_name = $business_name;
@@ -103,10 +118,9 @@ class Personal_Controller extends Controller {
         $valid = $this -> _submit_validate();
         if ($valid == false) {
             $this -> register();
-        } else {
-
+        } else {           
             $user = new Users();
-            $user -> Name = $name;
+            $user -> Name = $name;           
             $user -> Username = $username;
             $user -> Email = $email;
             $user -> Password = md5($password);
@@ -118,7 +132,7 @@ class Personal_Controller extends Controller {
 
     private function _submit_validate() {
         // validation rules
-        $this -> form_validation -> set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|is_unique[users.username]');
+        $this -> form_validation -> set_rules('username', 'Username', 'required|min_length[5]|max_length[20]|is_unique[users.username]');
         $this -> form_validation -> set_rules('email', 'Email', 'required|matches[email_confirm]|valid_email|is_unique[users.email]');
         $this -> form_validation -> set_rules('email_confirm', 'Email Confirmation', 'required|valid_email');
         $this -> form_validation -> set_rules('name', 'Full Name', 'trim|required|min_length[2]|max_length[50]');
@@ -147,26 +161,6 @@ class Personal_Controller extends Controller {
             $data['content_view'] = "personal_add_business_view";
             $data['city_data'] = Cities::getIdName();
             $data['category_data'] = Categories::getIdName();
-            $this -> base_params($data);
-        }
-    }
-
-    public function do_upload() {               
-        $config['upload_path'] = '/xampp/htdocs/Directory/system/Images/';        
-        $config['allowed_types'] = 'jpeg|jpg';
-        $config['max_size'] = '10000';
-
-        $this -> load -> library('upload', $config);
-
-        if (!$this -> upload -> do_upload()) {
-            $data['error'] = array('error' => $this -> upload -> display_errors());
-            $data['content_view'] = "personal_add_image_view";
-            $data['title'] = "Upload Image";            
-            $this -> base_params($data);
-        } else {
-            $data['data'] = array('upload_data' => $this -> upload -> data());
-            $data['content_view'] = 'upload_success';
-            $data['title'] = "Upload Image";
             $this -> base_params($data);
         }
     }

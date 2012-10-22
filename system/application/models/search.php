@@ -15,6 +15,7 @@ class Search extends Model {
 
         $sql = "SELECT 
         b.business_name AS Name,
+        b.image_allowed AS Allowed,
         b.road AS Road,
         b.box AS Box,
         b.telephone AS Telephone,

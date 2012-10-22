@@ -196,6 +196,7 @@ echo validation_errors('
             ?></td>
         </tr>
 
+
         <tr>
             <td><input name="submit" type="submit" value="Save Category" class="button" style="width: 100px; height: 30px; font-size: 13px"></td>
         </tr>

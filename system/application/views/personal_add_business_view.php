@@ -41,10 +41,13 @@ echo form_open('personal_controller/save', $attributes);
 echo validation_errors('
 <p class="error">', '</p>
 ');
-?>
 
+foreach ($error as $e) {
+    echo $e;
+};
+?>
 <input type="hidden" name="business_id" value = "<?php echo $business_id; ?>"/>
-<div class="holder">
+<div class="holder" style="width: 500px">
     <table>
         <tr class="yellow">
         <th class="" colspan="2">Business Details</th>
@@ -194,6 +197,16 @@ echo validation_errors('
             $data_search = array('name' => 'products_services', 'value' => $products_services, 'class' => 'othertext');
             echo form_textarea($data_search);
             ?></td>
+        </tr>
+        
+        <tr>            
+           <td>
+             <p style="font-size: 12px">
+    Please use these conventions in uploading your images:<br />
+    1. Only .jpg and .jpeg allowed<br />
+    2. The image name must be  the same as the name of the business for clarity eg for Hilton, Hilton.jpg
+    </p>
+           </td><td><input type="file" name="userfile"/></td>
         </tr>
 
         <tr>

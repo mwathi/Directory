@@ -493,7 +493,7 @@ a {
 
 ::-webkit-input-placeholder {
 	font-size: 15px;
-	text-align: left;
+	text-align: center;
 	font-family: Arial;
 }
 input:-moz-placeholder {

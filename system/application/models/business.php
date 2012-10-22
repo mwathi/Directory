@@ -8,8 +8,8 @@ class Businesses extends Doctrine_Record {
         $this -> hasColumn('Coordinate', 'varchar', 25);
         $this -> hasColumn('City', 'int', 15);
         $this -> hasColumn('Category', 'int', 15);
-        $this -> hasColumn('Logo', 'varchar', 30);
-        $this -> hasColumn('Image', 'varchar', 30);
+        $this -> hasColumn('Image', 'varchar', 100);
+        $this -> hasColumn('Image_allowed', 'varchar', 2);
         $this -> hasColumn('Active', 'int', 2);
         $this -> hasColumn('Building', 'varchar', 25);
         $this -> hasColumn('Floor', 'varchar', 15);

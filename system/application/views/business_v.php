@@ -65,6 +65,21 @@
                                     </a>
                                 </td>';  
                         } 
+                        
+                        if($business_data -> Image_allowed == '1'){
+                          echo '<td>
+                                    <a href='.base_url()."business_management/allow_image/".$business_data ->id. '>
+                                    Allow Image
+                                    </a>
+                                </td>';  
+                        }
+                        elseif($business_data -> Image_allowed == '0'){
+                          echo '<td>
+                                    <a href='.base_url()."business_management/disallow_image/".$business_data ->id. '>
+                                    Disalow Image
+                                    </a>
+                                </td>';  
+                        } 
                         ?>
                         </tr>
                         <?php

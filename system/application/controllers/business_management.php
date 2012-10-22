@@ -105,6 +105,18 @@ class Business_Management extends Controller {
         $query = $this -> db -> query($sql);
         redirect("business_management/listing", "refresh");
     }//end save
+    public function allow_image($id) {
+        $this -> load -> database();
+        $sql = 'update businesses set image_allowed = 0 where id =' . $id . ' ';
+        $query = $this -> db -> query($sql);
+        redirect("business_management/listing", "refresh");
+    }//end save
+    public function disallow_image($id) {
+        $this -> load -> database();
+        $sql = 'update businesses set image_allowed = 1 where id =' . $id . ' ';
+        $query = $this -> db -> query($sql);
+        redirect("business_management/listing", "refresh");
+    }//end save
     
     public function disapprove($id) {
         $this -> load -> database();

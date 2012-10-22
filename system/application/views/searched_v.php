@@ -17,9 +17,14 @@
         <ul>
         <?php $i = 1; foreach ($results as $result): ?>
             <li>
+                <?php 
+                if($result -> Allowed == 0){?>
                 <div id="product_logo_image">
                     <img src="<?php echo base_url().'system/Images/'.$result->Name.'.jpg' ?>" style="width: 50px; height: 50px"/>
-                </div>                        
+                </div>
+                <?php }
+                else{}
+                ?>                   
                 <h4><?php echo $i . ". ". search_highlight($result -> Name, $search_terms || $search_terms2); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url()."home_controller/moreInfoSearch/".$result->Name ?>"><u>More Information</u></a></h4>                
                 <span><?php echo $result -> Products; ?></span><br/>
                 <span style="font-style: italic; font-weight: bold"><?php echo $result -> Road; ?>,<?php echo search_extract($result -> Location, $search_terms || $search_terms2); ?><br /></span>               

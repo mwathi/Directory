@@ -6,6 +6,7 @@
 <link href="<?php echo base_url().'system/CSS/style.css'?>" type="text/css" rel="stylesheet"/>
 
 <?php
+
 if (isset($script_urls)) {
     foreach ($script_urls as $script_url) {
         echo "<script src=\"" . $script_url . "\" type=\"text/javascript\"></script>";
@@ -30,10 +31,19 @@ if (isset($styles)) {
     }
 }
 ?> 
+<?php
+    foreach ($error as $e) {
+        echo $e;
+    };
+ ?>
 </head>
 <body>
+    <a href="<?php echo base_url(); ?>">Home</a>
 <div id="signinholder">
-<?php echo form_open('personal_controller/saveSelf');echo validation_errors('
+<?php 
+$attributes = array('enctype' => 'multipart/form-data');
+echo form_open('personal_controller/saveSelf', $attributes);
+echo validation_errors('
 <p class="error">', '</p>
 ');
  ?>        
@@ -57,6 +67,7 @@ if (isset($styles)) {
             <b>Email Address Confirmation</b>
         </p>
         <input type="text" name="email_confirm" id="email_confirm" class="signininput"/>
+
         <p>
             <input type="submit" name="signin" value="Log in" class="greenbutton"/>
         </p>
