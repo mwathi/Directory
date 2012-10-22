@@ -9,7 +9,7 @@
     <?php echo $pagination; ?>
 </div>
 <?php endif; ?>
-        <table class="reporttable">
+        <table class="businessreporttable">
             <tr class="yellow">
                 <th>Business</th>
 
@@ -47,8 +47,25 @@
                         <td><?php echo $business_data -> Getting_there ?></td>
                         <td><?php echo $business_data -> Company_information ?></td>
                         <td><?php echo $business_data -> Products_services ?></td>
-                        <td><a href="<?php echo base_url()."business_management/delete/".$business_data -> id ?>" onclick="return confirm("Are you sure you want to delete this business?")" >Delete</a></td>
+                        <td><a href="<?php echo base_url()."business_management/delete/".$business_data -> id ?>" onclick="return confirm('Are you sure you want to delete this business?')" >Delete</a></td>
                         <td><a href="<?php echo base_url()."business_management/edit_business/".$business_data ->id ?>">Edit</a></td>
+                        
+                        <?php
+                        if($business_data -> Active == '1'){
+                          echo '<td>
+                                    <a href='.base_url()."business_management/approve/".$business_data ->id. '>
+                                    Approve
+                                    </a>
+                                </td>';  
+                        }
+                        elseif($business_data -> Active == '0'){
+                          echo '<td>
+                                    <a href='.base_url()."business_management/disapprove/".$business_data ->id. '>
+                                    Disapprove
+                                    </a>
+                                </td>';  
+                        } 
+                        ?>
                         </tr>
                         <?php
                         }

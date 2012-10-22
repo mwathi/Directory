@@ -83,11 +83,16 @@ class City_Management extends Controller {
     }//end validate_submission
 
     public function base_params($data) {
+        $data['userstuff'] = $this -> session -> userdata('username');            
         $data['styles'] = array("jquery-ui.css");
         $data['scripts'] = array("jquery-ui.js");
         $data['quick_link'] = "city_management";
         $data['content_view'] = "admin_view";
-        $this -> load -> view('admin_template', $data);
+        if ($data['userstuff'] != "matthawi") {
+            $this -> load -> view('restricted_v');
+        } else {
+            $this -> load -> view('admin_template', $data);
+        }
     }//end base_params
 
 }//end class

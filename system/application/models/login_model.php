@@ -14,7 +14,7 @@ class Login_model extends Model{
          
         // Prep the query
         $this->db->where('username', $username);
-        $this->db->where('password', $password);
+        $this->db->where('password', md5($password));
          
         // Run the query
         $query = $this->db->get('users');

@@ -1,5 +1,5 @@
 <?php
-
+$lang['is_unique']          = "The %s must contain a unique value.";
 $lang['required'] 			= "The %s field is required.";
 $lang['isset']				= "The %s field must have a value.";
 $lang['valid_email']		= "The %s field must contain a valid email address.";

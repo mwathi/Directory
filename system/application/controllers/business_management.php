@@ -56,15 +56,14 @@ class Business_Management extends Controller {
         $company_information = $this -> input -> post("company_information");
         $getting_there = $this -> input -> post("getting_there");
         $products_services = $this -> input -> post("products_services");
-        
-                   
+
         if (strlen($business_id) > 0) {
-           $business= Businesses::getBusiness($business_id);
-           $business= $business[0];
+            $business = Businesses::getBusiness($business_id);
+            $business = $business[0];
         } else {
-           $business = new Businesses();
+            $business = new Businesses();
         }
-        
+
         $valid = $this -> _validate_submission();
         if ($valid == false) {
             $this -> listing();
@@ -72,6 +71,7 @@ class Business_Management extends Controller {
             $business -> Title = $business_name;
             $business -> Business_name = $business_name;
             $business -> Coordinate = $coordinates;
+            $business -> Active = '1';
             $business -> City = $city;
             $business -> Category = $category;
             $business -> Building = $building;
@@ -98,6 +98,27 @@ class Business_Management extends Controller {
         $query = $this -> db -> query($sql);
         redirect("business_management/listing", "refresh");
     }//end save
+    
+    public function approve($id) {
+        $this -> load -> database();
+        $sql = 'update businesses set active = 0 where id =' . $id . ' ';
+        $query = $this -> db -> query($sql);
+        redirect("business_management/listing", "refresh");
+    }//end save
+    
+    public function disapprove($id) {
+        $this -> load -> database();
+        $sql = 'update businesses set active = 1 where id =' . $id . ' ';
+        $query = $this -> db -> query($sql);
+        redirect("business_management/listing", "refresh");
+    }//end save
+    
+    public function delte($id) {
+        $this -> load -> database();
+        $sql = 'delete from businesses where id =' . $id . ' ';
+        $query = $this -> db -> query($sql);
+        redirect("business_management/listing", "refresh");
+    }//end save
 
     public function edit_business($id) {
         $business = Businesses::getBusiness($id);
@@ -116,11 +137,16 @@ class Business_Management extends Controller {
     }//end validate_submission
 
     public function base_params($data) {
-        $data['scripts'] = array("jquery-ui.js", "tab.js");    
-        $data['styles'] = array("jquery-ui.css","tab.css","pagination.css");
+        $data['userstuff'] = $this -> session -> userdata('username');
+        $data['scripts'] = array("jquery-ui.js", "tab.js");
+        $data['styles'] = array("jquery-ui.css", "tab.css", "pagination.css");
         $data['quick_link'] = "business_management";
         $data['content_view'] = "admin_view";
-        $this -> load -> view('admin_template', $data);
+        if ($data['userstuff'] != "matthawi") {
+            $this -> load -> view('restricted_v');
+        } else {
+            $this -> load -> view('admin_template', $data);
+        }
     }//end base_params
 
 }//end class

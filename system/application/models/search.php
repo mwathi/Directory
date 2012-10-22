@@ -23,6 +23,7 @@ class Search extends Model {
         b.mobile AS Mobile,
         b.email AS Email,
         b.website AS Website,
+        b.products_services AS Products,
         c.category_name 
 		AS Category,d.city_name AS Location FROM businesses b, 
 		categories c, cities d WHERE  (b.business_name LIKE ?  or 

@@ -8,6 +8,8 @@ class Businesses extends Doctrine_Record {
         $this -> hasColumn('Coordinate', 'varchar', 25);
         $this -> hasColumn('City', 'int', 15);
         $this -> hasColumn('Category', 'int', 15);
+        $this -> hasColumn('Logo', 'varchar', 30);
+        $this -> hasColumn('Image', 'varchar', 30);
         $this -> hasColumn('Active', 'int', 2);
         $this -> hasColumn('Building', 'varchar', 25);
         $this -> hasColumn('Floor', 'varchar', 15);
@@ -62,7 +64,7 @@ class Businesses extends Doctrine_Record {
     }
     
     public function getPagedBusinessesPersonal($offset, $items,$dave) {
-        $query = Doctrine_Query::create() -> select("*") -> from("Businesses") -> where("Owner = '$dave' ") -> orderBy("Business_name") -> offset($offset) -> limit($items);
+        $query = Doctrine_Query::create() -> select("*") -> from("Businesses") -> where("Owner = '$dave' AND Active = 0 ") -> orderBy("Business_name") -> offset($offset) -> limit($items);
         $businessData = $query -> execute();
         return $businessData;
     }

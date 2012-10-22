@@ -11,15 +11,19 @@ class Users extends Doctrine_Record {
 
     public function setUp() {
         $this -> setTableName('users');
+        $this -> hasMutator('Password');
         $this -> hasMany('Businesses', array('local' => 'id', 'foreign' => 'owner'));
     }//end setUp
-
 
     public function getAll() {
         $query = Doctrine_Query::create() -> select("*") -> from("users");
         $userData = $query -> execute();
         return $userData;
     }//end getall
+
+    protected function _encrypt_password($value) {
+        $this -> _set('Password', md5($value));
+    }
 
     public function getAllHydrated() {
         $query = Doctrine_Query::create() -> select("Name,Username,Email") -> from("users");
@@ -31,6 +35,15 @@ class Users extends Doctrine_Record {
         $query = Doctrine_Query::create() -> select("*") -> from("Users") -> where("id = '$id'");
         $cityData = $query -> execute();
         return $cityData;
+    }
+
+    public static function userExists($username) {
+        if ($u = Doctrine::getTable('Users') -> findOneByUsername($username)) {
+
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }

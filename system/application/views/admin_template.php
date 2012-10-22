@@ -3,15 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $title; ?></title>
-<link href="<?php echo base_url().'system/CSS/style.css'?>" type="text/css" rel="stylesheet"/>
- 
+<link href="<?php echo base_url().'system/CSS/style.css'?>" type="text/css" rel="stylesheet"/> 
 <link href="<?php echo base_url().'system/CSS/jquery-ui.css'?>" type="text/css" rel="stylesheet"/> 
 <script src="<?php echo base_url().'system/Scripts/jquery.js'?>" type="text/javascript"></script> 
 <script src="<?php echo base_url().'system/Scripts/jquery-ui.js'?>" type="text/javascript"></script> 
 
 
 <?php
-error_reporting(0);
 if (isset($scripts)) {
     foreach ($scripts as $script) {
         echo "<script src=\"" . base_url() . "system/Scripts/" . $script . "\" type=\"text/javascript\"></script>";
@@ -29,19 +27,13 @@ if (isset($styles)) {
 }
 ?>  
 
-</head>
-<div id="header">
-    <div id="menu-container">
-        <div id="space"></div>
-        <h3><span style="color: red">R</span><span style="color: yellow">w</span><span style="color: green">a</span>nda Business Directory</h3>
-    </div>
-</div>
-<body>
-    <div id="adminsettings">
-        <div id="adminsettingstitle">
-            Administration Settings
+    </head>
+  <body>
+        <div id="head">
+            <div id="space"></div>
+            <div id="space"></div>
+            <span><a href="<?php echo base_url() ?>">Rwanda Business Directory</a></span>
         </div>
-    </div> 
 <div id="wrapper">
     <div id="main_wrapper"> 
         <?php $this -> load -> view($content_view); ?>

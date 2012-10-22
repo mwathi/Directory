@@ -8,7 +8,7 @@ if (isset($users)) {
     $name = "";
     $username = "";
     $email = "";
-
+    $user_id = "";
 }
 $attributes = array('enctype' => 'multipart/form-data');
 echo form_open('user_management/save', $attributes);
@@ -23,38 +23,31 @@ echo validation_errors('
 	<table>
 		<tr>
 			<td>Full Names</td>
-			<td>
-			<?php
+			<td> <?php
 
-            $data_search = array('name' => 'name', 'value' => $name,'class'=>'othertext');
+            $data_search = array('name' => 'name', 'value' => $name, 'class' => 'othertext');
             echo form_input($data_search);
-            ?>
-			</td>
+			?> </td>
 		</tr>
 
 		<tr>
 			<td>Username</td>
-			<td>
-<?php
+			<td> <?php
 
-            $data_search = array('name' => 'username', 'value' => $username,'class'=>'othertext');
+            $data_search = array('name' => 'username', 'value' => $username, 'class' => 'othertext');
             echo form_input($data_search);
-            ?>
-
-			</td>
+			?> </td>
 		</tr>
 
 		<tr>
 			<td>Email</td>
-			<td>
-			<?php
+			<td> <?php
 
-            $data_search = array('name' => 'email', 'value' => $email,'class'=>'othertext');
+            $data_search = array('name' => 'email', 'value' => $email, 'class' => 'othertext');
             echo form_input($data_search);
-            ?>
-
-			</td>
+			?> </td>
 		</tr>
+
 
 		<tr>
 			<td>

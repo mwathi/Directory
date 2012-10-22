@@ -40,8 +40,7 @@
                         <td><?php echo $business_data -> Fax ?></td>
                         <td><?php echo $business_data -> Mobile ?></td>
                         <td><?php echo $business_data -> Email ?></td>
-                        <td><?php echo $business_data -> Website ?></td>
-                        <td><a href="<?php echo base_url()."Business_Management/delete/".$business_data -> id ?>" onclick="return confirm("Are you sure you want to delete this business?")" >Delete</a></td>
+                        <td><?php echo $business_data -> Website ?></td> 
                         <td><a href="<?php echo base_url()."Business_Management/edit_business/".$business_data ->id ?>">Edit</a></td>
                         </tr>
                         <?php
@@ -61,3 +60,4 @@
     </div>
 
 </div>
+-
