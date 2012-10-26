@@ -29,7 +29,7 @@
                 <th>Products and Services</th>
             </tr>
                     <?php
-                    foreach($businesses as $business_data){?>
+                        foreach($businesses as $business_data){?>
                         <tr>                                                                        
                         <td><?php echo $business_data -> Business_name ?></td>
      

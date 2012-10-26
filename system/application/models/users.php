@@ -6,8 +6,7 @@ class Users extends Doctrine_Record {
         $this -> hasColumn('Name', 'varchar', 40);
         $this -> hasColumn('Username', 'varchar', 25);
         $this -> hasColumn('Password', 'varchar', 25);
-        $this -> hasColumn('Email', 'varchar', 35);
-        $this -> hasColumn('Photo', 'varchar', 35);
+        $this -> hasColumn('Email', 'varchar', 35);        
     }
 
     public function setUp() {

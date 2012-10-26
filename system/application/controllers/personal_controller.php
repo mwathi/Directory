@@ -73,7 +73,7 @@ class Personal_Controller extends Controller {
             $this -> personal_business_listing();
         } else {
             
-            $config['upload_path'] = '/xampp/htdocs/Directory/system/Images/';
+            $config['upload_path'] = './';
             $config['allowed_types'] = 'jpeg|jpg';
             $config['max_size'] = '10000';
 

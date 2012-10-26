@@ -22,7 +22,7 @@ class Business_Management extends Controller {
             $config['num_links'] = 5;
             $this -> pagination -> initialize($config);
             $data['pagination'] = $this -> pagination -> create_links();
-        }
+        }        
         $data['businesses'] = $businesses;
         $data['title'] = "Business Management::All Businesses";
         $data['module_view'] = "business_v";
