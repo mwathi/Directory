@@ -8,13 +8,26 @@ a {
 	text-decoration: none;
 }
 #head {
-	height: 47px;
+	height: 12%;
 	color: #000000;
 	margin-left: -8px;
 	margin-right: -8px;
 	margin-top: -8px;
 	position: relative;
-	background: #EDCE60;
+	/*	background: #EDCE60;*/
+	background-image: linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -o-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -moz-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -webkit-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -ms-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.31, rgb(247,247,13)),
+	color-stop(0.66, rgb(186,247,17)),
+	color-stop(0.83, rgb(79,240,103))
+	);
 	display: block;
 	font-size: 1.05em;
 	font-family: 'adobe-clean', 'HelveticaNeue-Light', Helvetica, Arial, sans-serif;
@@ -107,7 +120,20 @@ a {
 	margin-left: 8%;
 	margin-right: 7%;
 	height: 15%;
-	background-color: #FFE600;
+	/*background-color: #FFE600;*/
+	background-image: linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -o-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -moz-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -webkit-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -ms-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.31, rgb(247,247,13)),
+	color-stop(0.66, rgb(186,247,17)),
+	color-stop(0.83, rgb(79,240,103))
+	);
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 }
@@ -313,15 +339,24 @@ a {
 	line-height: 29px;
 	vertical-align: bottom;
 	border: 1px solid #50A6C2;
-	color: white;
+	color: black;
 	text-shadow: 0 1px rgba(0,0,0,0.3);
-	background-color: #50A6C2;
+	background-color: rgb(247,247,13);
 	display: inline-block;
 	min-width: 46px;
 	text-align: center;
 	font-weight: bold;
 	padding: 0 8px;
 	border-radius: 2px;
+	cursor: pointer;
+	font-size: 13px;
+	-webkit-transition: background-color 0.25s;
+	-moz-transition: background-color 0.25s;
+	-o-transition: background-color 0.25s;
+	transition: background-color 0.25s;
+}
+.greenbutton:hover {
+	background-color: rgb(186,247,17);
 }
 
 /*Tables*/
@@ -541,7 +576,6 @@ input:-moz-placeholder {
 	position: relative;
 	float: left;
 	width: 164px;
-
 	display: block;
 	list-style-type: disc;
 	-webkit-margin-before: 1px;
@@ -734,3 +768,37 @@ textarea {
  *
  *
  * */
+
+/*membership*/
+
+#membershipcolors div {
+	float: left;
+	margin: 0 20px 20px 150px;
+	color: #FFFFFF;
+	text-align: center;
+	border: 1px solid #000000
+}
+#membershipcolors {
+	float: left;
+	width: 100%;
+	margin: 0 auto 60px;
+	overflow: hidden;
+}
+#bronze {
+	width: 100px;
+	height: 100px;
+	background-color: #CD7F32;
+	border-radius: 2px
+}
+#silver {
+	width: 100px;
+	height: 100px;
+	background-color: #C0C0C0;
+	border-radius: 2px
+}
+#gold {
+	width: 100px;
+	height: 100px;
+	background-color: #FFD700;
+	border-radius: 2px
+}

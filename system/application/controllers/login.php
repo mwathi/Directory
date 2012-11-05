@@ -23,7 +23,7 @@ class Login extends Controller{
             redirect('business_management');
             }
             else{
-                redirect('home_controller/home');
+                redirect('personal_controller/page');
             }
         }       
     }

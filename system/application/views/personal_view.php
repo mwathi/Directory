@@ -29,15 +29,19 @@ if (isset($styles)) {
 
     </head>
     <body>
-        <div id="head">
+        <div id="head" align="center"">
             <div id="space"></div>
             <div id="space"></div>
-            <span><a href="<?php echo base_url() ?>">Rwanda Business Directory</a></span>
+            <span style="font-size: 18px;">
+                <br />
+                <a href="<?php echo base_url() ?>">Rwanda Business Directory</a>
+              </span>
         </div>
         <div id="sub_menu">
     <div class="personallinks">
        <h2>A<a href="<?php echo site_url("personal_controller/add"); ?>" class="personallinks">Add Businesses</a></h2>
        <h2>B<a href="<?php echo site_url("personal_controller/personal_business_listing"); ?>" class="personallinks">My Businesses</a></h2>
+       <h2>C<a href="<?php echo site_url("personal_controller"); ?>" class="personallinks">My Home</a></h2>
      </div>
       <div id="main_wrapper"> 
         <?php $this -> load -> view($content_view); ?>

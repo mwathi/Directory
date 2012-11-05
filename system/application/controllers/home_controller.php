@@ -16,7 +16,7 @@ class Home_Controller extends Controller {
     public function home() {
 
         $data['userstuff'] = $this -> session -> userdata('names');
-        $data['title'] = "System Home";
+        $data['title'] = "Rwanda Business Directory";
         $data['categoryinformation'] = Categories::getName();
         $data['populars'] = Categories::getPopularCategories();
         $data['content_view'] = "main_v";
@@ -94,6 +94,7 @@ class Home_Controller extends Controller {
 
         $data['content_view'] = "searched_v";
         $data['search_terms'] = $search_terms;
+        $data['title'] = "Rwanda Business Directory: Search Results";
         $data['search_terms2'] = $search_terms2;
         $data['first_result'] = @$first_result;
         $data['last_result'] = @$last_result;

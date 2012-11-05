@@ -72,7 +72,7 @@ class Personal_Controller extends Controller {
         if ($valid == false) {
             $this -> personal_business_listing();
         } else {
-            
+
             $config['upload_path'] = './';
             $config['allowed_types'] = 'jpeg|jpg';
             $config['max_size'] = '10000';
@@ -85,7 +85,7 @@ class Personal_Controller extends Controller {
                 $data = array('upload_data' => $this -> upload -> data());
                 //$this -> base_params($data);
             }
-            $pic=($_FILES['userfile']['name']);
+            $pic = ($_FILES['userfile']['name']);
             $business -> Image = $pic;
             $business -> Owner = $owner;
             $business -> Title = $business_name;
@@ -118,9 +118,9 @@ class Personal_Controller extends Controller {
         $valid = $this -> _submit_validate();
         if ($valid == false) {
             $this -> register();
-        } else {           
+        } else {
             $user = new Users();
-            $user -> Name = $name;           
+            $user -> Name = $name;
             $user -> Username = $username;
             $user -> Email = $email;
             $user -> Password = md5($password);
@@ -163,6 +163,17 @@ class Personal_Controller extends Controller {
             $data['category_data'] = Categories::getIdName();
             $this -> base_params($data);
         }
+    }
+
+    public function edit_business($id) {
+        $business = Businesses::getBusiness($id);
+        $data['city_data'] = Cities::getIdName();
+        $data['category_data'] = Categories::getIdName();
+        $data['business'] = $business[0];
+        $data['title'] = "Business Management";
+        $data['content_view'] = "personal_add_business_view";
+        $data['quick_link'] = "new_business";
+        $this -> base_params($data);
     }
 
     public function base_params($data) {

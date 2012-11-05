@@ -26,8 +26,8 @@
             <?php
             } else {
         ?>
-                <a href=<?php echo base_url().'login'?> id=loginlink> Rwanda Business Directory Log in </a> | </span>
-                
+                <a href=<?php echo base_url().'login'?> id=loginlink> Rwanda Business Directory Log in </a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+                <a href=<?php echo base_url().'login'?> id=loginlink> Add Your Business </a> | </span>
                 <?php
                 }
 		?>
