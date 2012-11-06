@@ -720,13 +720,14 @@ textarea {
 }
 
 .personallinks h2 {
-	width: 15%;
+	width: 25%;
 	background: #EDCE60;
 	padding: 0 0 0 10px;
 	font-size: 14px;
 	line-height: 2;
 }
 .personallinks h2 a {
+	width: 55%;
 	float: right;
 	position: relative;
 	text-decoration: none;

@@ -15,8 +15,8 @@
                         <td><?php echo $user_data -> Name ?></td>
                         <td><?php echo $user_data -> Username ?></td>
                         <td><?php echo $user_data -> Email ?></td>
-                        <td><a href="<?php echo base_url()."User_Management/delete/".$user_data['id'] ?>">Delete</a></td>
-                        <td><a href="<?php echo base_url()."User_Management/edit_category/".$user_data['id'] ?>">Edit</a></td>
+                        <td><a href="<?php echo base_url()."user_management/delete/".$user_data['id'] ?>">Delete</a></td>
+                        <td><a href="<?php echo base_url()."user_management/edit_user/".$user_data['id'] ?>">Edit</a></td>
                         </tr>
                         <?php
                         }

@@ -18,7 +18,7 @@
         <?php $i = 1; foreach ($results as $result): ?>
             <li>
                 <?php 
-                if($result -> Allowed == 0){?>
+                if($result -> Allowed == 0 && $result -> Membership >= 2){?>
                 <div id="product_logo_image">
                     <img src="<?php echo base_url().'system/Images/'.$result->Name.'.jpg' ?>" style="width: 50px; height: 50px"/>
                 </div>
@@ -32,7 +32,7 @@
             <hr />
         <?php $i++; endforeach ?>
         </ul>
-              <div style="float: right; margin-top: -500px; margin-right: -66%">
+              <div style="float: right; margin-top: -430px; margin-right: -66%">
             <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
 <param name="movie" value="<?php echo base_url().'system/sampleadd.swf'?>" />
 <embed src="<?php echo base_url().'system/sampleadd.swf'?>" width="206" height="712" name="test1" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />

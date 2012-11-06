@@ -17,6 +17,7 @@ class User_Management extends Controller {
     }//end listing
 
     public function add() {
+        $data['membership_data'] = Membership::getAll();
         $data['title'] = "User Management::Add New User";
         $data['quick_link'] = "new_user";
         $data['settings_view'] = "add_users_view";
@@ -32,11 +33,12 @@ class User_Management extends Controller {
 
     public function register() {
         $data['title'] = "Registration";
-        $this -> load -> view('registration_view',$data);
+        $this -> load -> view('registration_view', $data);
     }//end save
 
     public function edit_user($id) {
         $user = Users::getUsers($id);
+        $data['membership_data'] = Membership::getAll();
         $data['users'] = $user[0];
         $data['title'] = "User Management";
         $data['settings_view'] = "add_users_view";
@@ -45,38 +47,52 @@ class User_Management extends Controller {
     }
 
     public function save() {
+        $user_id = $this -> input -> post("user_id");
+        $membership = $this -> input -> post("membership");
+        $username = $this -> input -> post("username");
+        $password = '123456';
+        $name = $this -> input -> post("name");
+        $email = $this -> input -> post("email");
+
+        if (strlen($user_id) > 0) {
+            $user = Users::getUsers($user_id);
+            $user = $user[0];
+        } else {
+            $user = new Users();
+        }
+
         $valid = $this -> _validate_submission();
         if ($valid == false) {
             $this -> add();
         } else {
-            $username = $this -> input -> post("username");
-            $password = '123456';
-            $name = $this -> input -> post("name");
-            $email = $this -> input -> post("email");
-            
-            $user = new Users();
             $user -> Name = $name;
+            $user -> Membership = $membership;
             $user -> Username = $username;
             $user -> Email = $email;
             $user -> Password = md5($password);
 
             $user -> save();
+
+            $this -> load -> database();
+            $sql = 'update businesses set business_member = '.$membership.' where owner =' . $user_id . ' ';
+            $query = $this -> db -> query($sql);
+            
             redirect("user_management/listing");
         }//end else
-    }//end save
 
+    }//end save
 
     private function _validate_submission() {
         $this -> form_validation -> set_rules('name', 'Full Name', 'trim|required|min_length[2]|max_length[25]');
-        $this -> form_validation -> set_rules('username', 'Username', 'trim|required|min_length[2]|max_length[25]|is_unique[users.username]');
-        $this -> form_validation -> set_rules('email', 'User Email Address', 'trim|valid_email|required|is_unique[users.email]');
+        $this -> form_validation -> set_rules('username', 'Username', 'trim|required|min_length[2]|max_length[25]');
+        $this -> form_validation -> set_rules('email', 'User Email Address', 'trim|valid_email|required');
         return $this -> form_validation -> run();
     }//end validate_submissionis
-    
+
     public function saveSelf() {
         $valid = $this -> _validate_self_submission();
         if ($valid == false) {
-            $this -> load->view('registration_view');            
+            $this -> load -> view('registration_view');
         } else {
             $username = $this -> input -> post("username");
             $password = $this -> input -> post("password");
@@ -95,7 +111,6 @@ class User_Management extends Controller {
         }//end else
     }//end save
 
-
     private function _validate_self_submission() {
         $this -> form_validation -> set_rules('name', 'Full Name', 'trim|required|min_length[2]|max_length[25]');
         $this -> form_validation -> set_rules('username', 'Username', 'trim|required|min_length[2]|max_length[25]|is_unique[users.username]');
@@ -103,7 +118,6 @@ class User_Management extends Controller {
         $this -> form_validation -> set_rules('email_confirm', 'Email Address Confirmation', 'trim|valid_email|required|matches[email_confirm]');
         return $this -> form_validation -> run();
     }//end validate_submissionis
-    
 
     public function base_params($data) {
         $data['userstuff'] = $this -> session -> userdata('username');

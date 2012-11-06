@@ -6,13 +6,14 @@ class Users extends Doctrine_Record {
         $this -> hasColumn('Name', 'varchar', 40);
         $this -> hasColumn('Username', 'varchar', 25);
         $this -> hasColumn('Password', 'varchar', 25);
-        $this -> hasColumn('Email', 'varchar', 35);        
+        $this -> hasColumn('Email', 'varchar', 35);       
+        $this -> hasColumn('Membership', 'smallint', 2);        
     }
 
     public function setUp() {
         $this -> setTableName('users');
         $this -> hasMutator('Password');
-        $this -> hasMany('Businesses', array('local' => 'id', 'foreign' => 'owner'));
+        $this -> hasMany('Businesses', array('local' => 'id', 'foreign' => 'owner'));        
     }//end setUp
 
     public function getAll() {
@@ -26,7 +27,7 @@ class Users extends Doctrine_Record {
     }
 
     public function getAllHydrated() {
-        $query = Doctrine_Query::create() -> select("Name,Username,Email") -> from("users");
+        $query = Doctrine_Query::create() -> select("Name,Username,Email,Membership") -> from("users");
         $userData = $query -> execute(array(), Doctrine::HYDRATE_ARRAY);
         return $userData;
     }
@@ -35,15 +36,6 @@ class Users extends Doctrine_Record {
         $query = Doctrine_Query::create() -> select("*") -> from("Users") -> where("id = '$id'");
         $cityData = $query -> execute();
         return $cityData;
-    }
-
-    public static function userExists($username) {
-        if ($u = Doctrine::getTable('Users') -> findOneByUsername($username)) {
-
-            return TRUE;
-        } else {
-            return FALSE;
-        }
     }
 
 }

@@ -18,12 +18,18 @@
 	<div id="space"></div>    
 		<span class="loginbarother" id="loginbarother" style="margin-left: -25%">
 		Select your business of choice from the list below &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;		
-		Advertise with Us&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
-		<?php
+		
+		<?php	
             if ($userstuff != NULL) {
+                if ($userstuff != "matthew hawi" && $memberstuff == 3) {
                 ?>
-                <a href="<?php echo base_url().'personal_controller/page'?>">Welcome <?php echo "<span id=userstuff>" . $userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="">Advertise with Us</a>&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url().'personal_controller/page'?>">Welcome <?php echo "<span id=userstuff>" . $userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <?php
+            }elseif($userstuff == "matthew hawi"){
+                ?>
+                <a href="<?php echo base_url().'business_management'?>">Welcome <?php echo "<span id=userstuff>" . $userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <?php
+            }
             } else {
         ?>
                 <a href=<?php echo base_url().'login'?> id=loginlink> Rwanda Business Directory Log in </a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 

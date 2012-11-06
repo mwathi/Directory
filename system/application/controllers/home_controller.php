@@ -16,6 +16,7 @@ class Home_Controller extends Controller {
     public function home() {
 
         $data['userstuff'] = $this -> session -> userdata('names');
+        $data['memberstuff'] = $this -> session -> userdata('membership');
         $data['title'] = "Rwanda Business Directory";
         $data['categoryinformation'] = Categories::getName();
         $data['populars'] = Categories::getPopularCategories();
@@ -141,10 +142,11 @@ class Home_Controller extends Controller {
         $data['search_terms'] = $search_terms;
         $data['search_terms2'] = $search_terms2;
         $data['results'] = @$results;
+        $data['title'] = "Rwanda Business Directory: Search Results";
         $this -> load -> view('template_noad', $data);
 
         // Enable the profiler
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
     }
 
 }

@@ -26,6 +26,7 @@ class Login_model extends Model{
             $data = array(
                     'userid' => $row->id,
                     'names' => $row->name,
+                    'membership' => $row->membership,
                     'username' => $row->username,
                     'validated' => true
                     );
