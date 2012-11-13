@@ -1,3 +1,3 @@
-You need to be logged in to view this page
+Wewe si admin, toka hapa
 <br />
-<a href="/directory/home_controller">Back to Home page</a>
+<a href="<?php echo base_url(); ?>">Back to Home page</a>

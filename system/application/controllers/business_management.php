@@ -33,6 +33,7 @@ class Business_Management extends Controller {
         $data['title'] = "Business Management::Add New Business";
         $data['quick_link'] = "new_business";
         $data['module_view'] = "add_business_view";
+        $data['membership_data'] = Membership::getAll();
         $data['city_data'] = Cities::getIdName();
         $data['category_data'] = Categories::getIdName();
         $this -> base_params($data);
@@ -56,7 +57,8 @@ class Business_Management extends Controller {
         $company_information = $this -> input -> post("company_information");
         $getting_there = $this -> input -> post("getting_there");
         $products_services = $this -> input -> post("products_services");
-
+        $membership = $this -> input -> post("membership");
+        
         if (strlen($business_id) > 0) {
             $business = Businesses::getBusiness($business_id);
             $business = $business[0];
@@ -74,6 +76,7 @@ class Business_Management extends Controller {
             $business -> Active = '1';
             $business -> City = $city;
             $business -> Category = $category;
+            $business -> Value = $membership;
             $business -> Building = $building;
             $business -> Floor = $floor;
             $business -> Road = $road;
@@ -132,8 +135,9 @@ class Business_Management extends Controller {
         redirect("business_management/listing", "refresh");
     }//end save
 
-    public function edit_business($id) {
+    public function edit_business($id) {                  
         $business = Businesses::getBusiness($id);
+        $data['membership_data'] = Membership::getAll(); 
         $data['city_data'] = Cities::getIdName();
         $data['category_data'] = Categories::getIdName();
         $data['business'] = $business[0];

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if (isset($business)) {
     $business_name = $business -> Business_name;
     $city = $business -> City;

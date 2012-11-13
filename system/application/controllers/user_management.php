@@ -38,7 +38,7 @@ class User_Management extends Controller {
 
     public function edit_user($id) {
         $user = Users::getUsers($id);
-        $data['membership_data'] = Membership::getAll();
+//        $data['membership_data'] = Membership::getAll();
         $data['users'] = $user[0];
         $data['title'] = "User Management";
         $data['settings_view'] = "add_users_view";
@@ -48,7 +48,7 @@ class User_Management extends Controller {
 
     public function save() {
         $user_id = $this -> input -> post("user_id");
-        $membership = $this -> input -> post("membership");
+        //$membership = $this -> input -> post("membership");
         $username = $this -> input -> post("username");
         $password = '123456';
         $name = $this -> input -> post("name");
@@ -66,16 +66,16 @@ class User_Management extends Controller {
             $this -> add();
         } else {
             $user -> Name = $name;
-            $user -> Membership = $membership;
+            //$user -> Membership = $membership;
             $user -> Username = $username;
             $user -> Email = $email;
             $user -> Password = md5($password);
 
             $user -> save();
 
-            $this -> load -> database();
+            /*$this -> load -> database();
             $sql = 'update businesses set business_member = '.$membership.' where owner =' . $user_id . ' ';
-            $query = $this -> db -> query($sql);
+            $query = $this -> db -> query($sql);*/
             
             redirect("user_management/listing");
         }//end else

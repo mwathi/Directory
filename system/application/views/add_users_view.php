@@ -1,7 +1,7 @@
 <?php
 if (isset($users)) {
     $name = $users -> Name;
-    $membership = $users -> Membership;
+    //$membership = $users -> Membership;
     $username = $users -> Username;
     $email = $users -> Email;
     $user_id = $users -> id;
@@ -10,7 +10,7 @@ if (isset($users)) {
     $username = "";
     $email = "";
     $user_id = "";
-    $membership = ""; 
+    //$membership = ""; 
 }
 $attributes = array('enctype' => 'multipart/form-data');
 echo form_open('user_management/save', $attributes);
@@ -50,7 +50,7 @@ echo validation_errors('
 			?> </td>
 		</tr>
 		
-		<tr>
+<!--		<tr>
             <td>Membership</td>
             <td><select name="membership" id="membership" class="othertext">
                 <option value="0" selected>Select Membership</option>
@@ -62,7 +62,7 @@ echo validation_errors('
             </select>
             </td>
         </tr>
-
+-->
 
 		<tr>
 			<td>

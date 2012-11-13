@@ -9,7 +9,7 @@
 			js.id = id;
 			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=395161260549523";
 			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk')); 
+		}(document, 'script', 'facebook-jssdk'));
 </script>
 <div align="center">
 	<div id="space"></div>
@@ -21,9 +21,9 @@
 		
 		<?php	
             if ($userstuff != NULL) {
-                if ($userstuff != "matthew hawi" && $memberstuff == 3) {
+                if ($userstuff != "matthew hawi") {
                 ?>
-                <a href="">Advertise with Us</a>&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url().'personal_controller/page'?>">Welcome <?php echo "<span id=userstuff>" . $userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="home_controller/advertise">Advertise with Us</a>&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url().'personal_controller/page'?>">Welcome <?php echo "<span id=userstuff>" . $userstuff . "</span>"; ?></a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href=<?php echo base_url().'home_controller/do_logout'?>>Logout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <?php
             }elseif($userstuff == "matthew hawi"){
                 ?>
@@ -95,8 +95,8 @@
 				<span>
 					<ul>
 						<?php
-                        foreach ($populars as $popularCategories) {
-                            echo "<li> <a href='home_controller/search/$popularCategories->Category_name'> " . $popularCategories -> Category_name . "</a></li>";
+                        foreach ($latest as $latestBusinesses) {
+                            echo "<li> <a href='home_controller/search/$latestBusinesses->Business_name'> " . $latestBusinesses->Business_name . "</a></li>";
                         }
 						?>
 					</ul> </span>
@@ -115,36 +115,47 @@
 </object>
         </div>    
 
-		<div class="project">
-			<div id="mike">
-				<a style="cursor: pointer"><img src="http://www.nineliondesign.com/images/work/feiner_thumb.jpg" width="270" height="270"></a>
+		<div class="project" style="width: 341px">
+			<div id="mike" style="width: 339px">
+				<span>
+                    <ul>
+                        <?php
+                        foreach ($populars as $popularCategories) {
+                            echo "<li> <a href='home_controller/search/$popularCategories->Category_name'> " . $popularCategories -> Category_name . "</a></li>";
+                        }
+                        ?>
+                    </ul> </span>
 			</div>
 
 			<div class="info">
-				<h3 class="title">Offers</h3>
+				<h3 class="title">Useful Links</h3>
 				<p>
 					<span></span><span></span
 				</p>
 			</div>
 		</div>
 
-		<div class="project">
-			<div id="mike">
-				<a style="cursor: pointer"> <img src="<?php echo base_url().'system/Images/travelrwanda.jpg'?>"/> </a>
+		<div class="project" style="width: 310px">
+			<div id="mike" style="width: 308px">
+				<span>
+                    <ul>
+                        <?php
+                        foreach ($sponsored as $sponsoredLinks) {
+                            echo "<li> <a href='$sponsoredLinks->Link'> " . $sponsoredLinks -> Name . "</a></li>";
+                        }
+                        ?>
+                    </ul> </span>
 			</div>
 
 			<div class="info">
-				<h3 class="title">Shopping Malls</h3>
+				<h3 class="title">Sponsored Links</h3>
 				<p>
 					<span></span><span></span><span></span
 				</p>
 			</div>
 		</div>
-    <div class="project">
-         
-        </div>    
 
-    <div class="projectad">
+    <div class="projectad" style="margin-left: 8px">
             <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
 <param name="movie" value="<?php echo base_url().'system/sampleadd.swf'?>" />
 <embed src="<?php echo base_url().'system/sampleadd.swf'?>" width="200" height="342" name="test1" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />

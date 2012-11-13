@@ -20,6 +20,8 @@ class Home_Controller extends Controller {
         $data['title'] = "Rwanda Business Directory";
         $data['categoryinformation'] = Categories::getName();
         $data['populars'] = Categories::getPopularCategories();
+        $data['latest'] = Businesses::getLatestBusinesses();
+        $data['sponsored'] = Sponsored_Links::getAll();
         $data['content_view'] = "main_v";
         $data['link'] = "home";
         $this -> load -> view("template", $data);
@@ -132,7 +134,7 @@ class Home_Controller extends Controller {
         if ($search_terms) {
 
             $this -> load -> model('search');
-            $results = $this -> search -> moreInfoFind($search_terms);        
+            $results = $this -> search -> moreInfoFind($search_terms);
         } elseif ($search_terms2) {
             $this -> load -> model('search');
             $results = $this -> search -> moreInfoFind($search_terms2);
@@ -143,10 +145,16 @@ class Home_Controller extends Controller {
         $data['search_terms2'] = $search_terms2;
         $data['results'] = @$results;
         $data['title'] = "Rwanda Business Directory: Search Results";
-        $this -> load -> view('template_noad', $data);
+        $this -> load -> view('template', $data);
 
         // Enable the profiler
         //$this->output->enable_profiler(TRUE);
+    }
+
+    function advertise() {        
+        $data['content_view'] = "advertise_v";
+        $data['title'] = "Rwanda Business Directory: Advertise";
+        $this -> load -> view('template_noad', $data);
     }
 
 }

@@ -10,6 +10,8 @@
 
 
 <?php
+error_reporting(0);
+$this -> load -> helper(array('form', 'search'));
 if (isset($scripts)) {
     foreach ($scripts as $script) {
         echo "<script src=\"" . base_url() . "system/Scripts/" . $script . "\" type=\"text/javascript\"></script>";
@@ -26,27 +28,33 @@ if (isset($styles)) {
     }
 }
 ?>  
-
-    </head>
-  <body>
-        <div id="head">
-            <div id="space"></div>
-            <div id="space"></div>
-            <span><a href="<?php echo base_url() ?>">Rwanda Business Directory</a></span>
+</head>
+<div id="header" style="margin-top: -90px">    
+</div>
+<body>
+    <div id="search" style="margin-left: 0; margin-right: 0">
+        <?php echo form_open('home_controller/search'); ?>
+        <div id="searchcontents">
+            <div id="logo" style="margin-top: -90px">
+                <h3><a href="<?php echo base_url() ?>" style="color: #000"><img src="<?php echo base_url().'system/Images/RBD_logo.png'?>"/> </a></h3>
+            </div>
+            
+    <span id="alotofcrap" style="font-size: 20px"> | Admin Page</span> 
         </div>
-<div id="wrapper">
+    <?php echo form_close(); ?>
+    
+    </div> 
+    <div id="wrapper">
     <div id="main_wrapper"> 
         <?php $this -> load -> view($content_view); ?>
     </div>
   <!--End Wrapper div-->
 </div>
 
-<div id="footer">
-    <?php $this -> load -> view("footer_v"); ?>
+<div id="bottom_ribbon">
+    <div id="footer">
+        <?php $this -> load -> view("footer_v"); ?>
+    </div>
 </div>
-
 </body>
 </html>
-
-
-

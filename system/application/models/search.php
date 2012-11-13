@@ -25,11 +25,11 @@ class Search extends Model {
         b.email AS Email,
         b.website AS Website,
         b.products_services AS Products,
-        b.business_member AS Membership,
+        b.value AS Membership,
         c.category_name 
 		AS Category,d.city_name AS Location FROM businesses b, 
 		categories c, cities d WHERE  (b.business_name LIKE ?  or 
-		d.city_name LIKE ? or c.category_name LIKE ?)  and b.category = c.id and b.city = d.id > 0
+		d.city_name LIKE ? or c.category_name LIKE ?)  and b.category = c.id and active = 0 and b.city = d.id > 0
 				$limit";
         $query = $this -> db -> query($sql, array('%'.$terms . '%','%'. $terms . '%','%'. $terms . '%'));     
         $updateVisits = "UPDATE categories SET visits = visits + 1 WHERE category_name LIKE '%$terms%' ";
@@ -53,10 +53,10 @@ class Search extends Model {
         b.mobile AS Mobile,
         b.email AS Email,
         b.website AS Website,
-        b.business_member AS Membership,
+        b.value AS Membership,
         c.category_name 
         AS Category,d.city_name AS Location FROM businesses b, 
-        categories c, cities d WHERE  (b.business_name LIKE ?)  and b.category = c.id and b.city = d.id LIMIT 1";
+        categories c, cities d WHERE  (b.business_name LIKE ?)  and b.category = c.id and active = 0 and b.city = d.id LIMIT 1";
         $query = $this -> db -> query($sql, array($terms));     
         $updateVisits = "UPDATE categories SET visits = visits + 1 WHERE category_name LIKE '%$terms%' ";
         $updateVisitQuery = $this -> db -> query($updateVisits);

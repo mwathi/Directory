@@ -1,3 +1,4 @@
+<?php error_reporting(0);?>
 <div id="view_content">
     <a class="action_button" id="new_business" href="<?php echo site_url("business_management/add"); ?>">New Business</a>
     <div align="center">
@@ -25,11 +26,11 @@
                 <th>Email</th>
                 <th>Website</th>
                 <th>Getting There</th>
-                <th>Company Information</th>
+                <!--<th>Company Information</th>-->
                 <th>Products and Services</th>
             </tr>
                     <?php
-                        foreach($businesses as $business_data){?>
+                    foreach($businesses as $business_data){?>
                         <tr>                                                                        
                         <td><?php echo $business_data -> Business_name ?></td>
      
@@ -45,7 +46,7 @@
                         <td><?php echo $business_data -> Email ?></td>
                         <td><?php echo $business_data -> Website ?></td>
                         <td><?php echo $business_data -> Getting_there ?></td>
-                        <td><?php echo $business_data -> Company_information ?></td>
+                        <!--<td><?php echo $business_data -> Company_information ?></td>-->
                         <td><?php echo $business_data -> Products_services ?></td>
                         <td><a href="<?php echo base_url()."business_management/delete/".$business_data -> id ?>" onclick="return confirm('Are you sure you want to delete this business?')" >Delete</a></td>
                         <td><a href="<?php echo base_url()."business_management/edit_business/".$business_data ->id ?>">Edit</a></td>

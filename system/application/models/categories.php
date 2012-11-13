@@ -61,6 +61,5 @@ class Categories extends Doctrine_Record {
         return $categoryData;
     }
 
-   
 }
 ?>

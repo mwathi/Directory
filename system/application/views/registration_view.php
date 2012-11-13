@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $title; ?></title>
+
 <link href="<?php echo base_url().'system/CSS/style.css'?>" type="text/css" rel="stylesheet"/>
 
 <?php
-
 if (isset($script_urls)) {
     foreach ($script_urls as $script_url) {
         echo "<script src=\"" . $script_url . "\" type=\"text/javascript\"></script>";
@@ -31,19 +30,10 @@ if (isset($styles)) {
     }
 }
 ?> 
-<?php
-    foreach ($error as $e) {
-        echo $e;
-    };
- ?>
 </head>
 <body>
-    <a href="<?php echo base_url(); ?>">Home</a>
 <div id="signinholder">
-<?php 
-$attributes = array('enctype' => 'multipart/form-data');
-echo form_open('personal_controller/saveSelf', $attributes);
-echo validation_errors('
+<?php echo form_open('personal_controller/saveSelf');echo validation_errors('
 <p class="error">', '</p>
 ');
  ?>        
@@ -67,7 +57,6 @@ echo validation_errors('
             <b>Email Address Confirmation</b>
         </p>
         <input type="text" name="email_confirm" id="email_confirm" class="signininput"/>
-
         <p>
             <input type="submit" name="signin" value="Log in" class="greenbutton"/>
         </p>

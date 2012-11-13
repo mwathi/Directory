@@ -29,21 +29,33 @@ if (isset($styles)) {
 
     </head>
     <body>
-        <div id="head" align="center"">
-            <div id="space"></div>
-            <div id="space"></div>
-            <span style="font-size: 18px;">
-                <br />
-                <a href="<?php echo base_url() ?>">Rwanda Business Directory</a>
-              </span>
-        </div>
+        <div id="head" align="left"">
+
+                <a href="<?php echo base_url() ?>"><img src="<?php echo base_url().'system/Images/RBD_logo.png'?>"/></a>
+</div>
+<div id="space"></div> 
+<div align="center">
+	<div id="space"></div>
+	<div id="loginbar">
+	<div id="space"></div>
+	<div id="space"></div>    
+		<span class="loginbarother" id="loginbarother" style="margin-left: -25%">
+<a href="<?php echo site_url("home_controller"); ?>">Rwanda Business Directory Home <!-- <img src="<?php echo base_url().'system/Images/rbdhome.png'?>"/> --> </a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+<a href="<?php echo site_url("personal_controller"); ?>">My Home</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;		
+				  <a href="<?php echo site_url("personal_controller/personal_business_listing"); ?>">My businesses</a>&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+            
+<div id="space"></div>  
+<div id="space"></div>
+<div id="space"></div>
+
         <div id="sub_menu">
-    <div class="personallinks">
+   <!-- <div class="personallinks">
        <h2>A<a href="<?php echo site_url("personal_controller/add"); ?>" class="personallinks">Add Businesses</a></h2>
        <h2>B<a href="<?php echo site_url("personal_controller/personal_business_listing"); ?>" class="personallinks">My Businesses</a></h2>
        <h2>C<a href="<?php echo site_url("personal_controller"); ?>" class="personallinks">My Home</a></h2>
        <h2>D<a href="<?php echo site_url("home_controller"); ?>" class="personallinks">Rwanda Business Home</a></h2>
-     </div>
+     </div> -->
+<div id="space"></div>
       <div id="main_wrapper"> 
         <?php $this -> load -> view($content_view); ?>
     </div>

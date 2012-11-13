@@ -8,7 +8,7 @@ a {
 	text-decoration: none;
 }
 #head {
-	height: 12%;
+	height: 15%;
 	color: #000000;
 	margin-left: -8px;
 	margin-right: -8px;
@@ -32,7 +32,7 @@ a {
 	font-size: 1.05em;
 	font-family: 'adobe-clean', 'HelveticaNeue-Light', Helvetica, Arial, sans-serif;
 	font-weight: 300;
-	padding: 0;
+	padding-left: 7px;
 }
 #head span {
 	margin-left: 10%;
@@ -86,8 +86,21 @@ a {
 	display: block;
 	text-align: center;
 }
+#personalnav {
+	height: 40px;
+	margin-left: 8%;
+	margin-right: 7%;
+	background: #FFFFFF;
+	/*-moz-box-shadow: 3px 3px 5px 6px #ccc;
+	 -webkit-box-shadow: 3px 3px 5px 6px #ccc;*/
+	box-shadow: 1px 1px 10px 1px #ccc;
+	color: #000000;
+	padding: 0;
+	display: block;
+	text-align: center;
+}
 #welcome {
-	height: 530px;
+	height: 830px;
 	margin-left: 22.3%;
 	margin-right: 15%;
 	background: #FFFFFF;
@@ -119,7 +132,7 @@ a {
 	margin-top: 0%;
 	margin-left: 8%;
 	margin-right: 7%;
-	height: 15%;
+	height: 150px;
 	/*background-color: #FFE600;*/
 	background-image: linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);
 	background-image: -o-linear-gradient(bottom, rgb(247,247,13) 31%, rgb(186,247,17) 66%, rgb(79,240,103) 83%);

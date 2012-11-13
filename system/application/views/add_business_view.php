@@ -3,6 +3,7 @@ if (isset($business)) {
     $business_name = $business -> Business_name;
     $city = $business -> City;
     $coordinate = $business -> Coordinate;
+    $membership = $business -> Value;
     $category = $business -> Category;
     $building = $business -> Building;
     $floor = $business -> Floor;
@@ -35,6 +36,7 @@ if (isset($business)) {
     $company_information = "";
     $getting_there = "";
     $products_services = "";
+    $membership = "";
 }
 $attributes = array('enctype' => 'multipart/form-data');
 echo form_open('business_management/save', $attributes);
@@ -194,6 +196,19 @@ echo validation_errors('
             $data_search = array('name' => 'products_services', 'value' => $products_services, 'class' => 'othertext');
             echo form_textarea($data_search);
             ?></td>
+        </tr>
+        
+        <tr>
+            <td>Membership</td>
+            <td><select name="membership" id="membership" class="othertext">
+                <option value="0" selected>Select Membership</option>
+                <?php
+                foreach ($membership_data as $member) {
+                    echo "<option selected value='$member->id'>$member->Membership</option>";
+                }
+                ?>
+            </select>
+            </td>
         </tr>
 
 

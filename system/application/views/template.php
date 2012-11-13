@@ -50,7 +50,7 @@ if (isset($styles)) {
         <?php echo form_open('home_controller/search'); ?>
         <div id="searchcontents">
             <div id="logo">
-                <h3><a href="<?php echo base_url() ?>" style="color: #000"><span style="font-weight: normal">Rwanda <br /> Business <br /> Directory</span> </a></h3>
+                <h3><a href="<?php echo base_url() ?>" style="color: #000"><img src="<?php echo base_url().'system/Images/RBD_logo.png'?>"/> </a></h3>
             </div>
             <?php echo form_input(array('name' => 'q', 'id' => 'searchwhat', 'placeHolder' => 'What are you looking for? e.g. Hilton', 'value' => $search_terms, 'class' => 'searchfield')); ?>
             <?php echo form_input(array('name' => 'r', 'id' => 'searchwhere', 'placeHolder' => 'Where is it located? e.g. Kigali', 'value' => $search_terms2, 'class' => 'searchfield')); ?>

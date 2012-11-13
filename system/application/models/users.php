@@ -7,7 +7,7 @@ class Users extends Doctrine_Record {
         $this -> hasColumn('Username', 'varchar', 25);
         $this -> hasColumn('Password', 'varchar', 25);
         $this -> hasColumn('Email', 'varchar', 35);       
-        $this -> hasColumn('Membership', 'smallint', 2);        
+     //   $this -> hasColumn('Membership', 'smallint', 2);        
     }
 
     public function setUp() {
@@ -27,7 +27,7 @@ class Users extends Doctrine_Record {
     }
 
     public function getAllHydrated() {
-        $query = Doctrine_Query::create() -> select("Name,Username,Email,Membership") -> from("users");
+        $query = Doctrine_Query::create() -> select("Name,Username,Email") -> from("users");
         $userData = $query -> execute(array(), Doctrine::HYDRATE_ARRAY);
         return $userData;
     }
