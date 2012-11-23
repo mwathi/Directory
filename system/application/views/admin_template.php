@@ -35,11 +35,12 @@ if (isset($styles)) {
     <div id="search" style="margin-left: 0; margin-right: 0">
         <?php echo form_open('home_controller/search'); ?>
         <div id="searchcontents">
-            <div id="logo" style="margin-top: -90px">
+            <div id="logo" style="margin-top: -250px">
                 <h3><a href="<?php echo base_url() ?>" style="color: #000"><img src="<?php echo base_url().'system/Images/RBD_logo.png'?>"/> </a></h3>
+                <span id="alotofcrap" style="font-size: 20px">Admin Page</span>
             </div>
             
-    <span id="alotofcrap" style="font-size: 20px"> | Admin Page</span> 
+     
         </div>
     <?php echo form_close(); ?>
     

@@ -164,6 +164,16 @@ class Personal_Controller extends Controller {
             $this -> base_params($data);
         }
     }
+    
+    public function options() {
+        if ($this -> session -> userdata('username') == NULL) {
+            $this -> load -> view('restricted_v');
+        } else {
+            $data['title'] = "Rwanda Business Directory Options Page";
+            $data['content_view'] = "options";
+            $this -> base_params($data);
+        }
+    }
 
     public function edit_business($id) {
         $business = Businesses::getBusiness($id);
@@ -177,8 +187,8 @@ class Personal_Controller extends Controller {
     }
 
     public function base_params($data) {
-        $data['scripts'] = array("jquery-ui.js");
-        $data['styles'] = array("jquery-ui.css");
+        $data['scripts'] = array("jquery-ui.js", "dhtmlxcommon.js", "dhtmlxtabbar.js");
+        $data['styles'] = array("jquery-ui.css","dhtmlxtabbar.css");
         $this -> load -> view('personal_view', $data);
     }//end base_params
 

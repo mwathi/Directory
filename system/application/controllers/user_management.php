@@ -11,7 +11,7 @@ class User_Management extends Controller {
 
     public function listing() {
         $data = array();
-        $data['settings_view'] = "users_v";
+        $data['module_view'] = "users_v";
         $data['user_details'] = Users::getAll();
         $this -> base_params($data);
     }//end listing
@@ -20,7 +20,7 @@ class User_Management extends Controller {
         $data['membership_data'] = Membership::getAll();
         $data['title'] = "User Management::Add New User";
         $data['quick_link'] = "new_user";
-        $data['settings_view'] = "add_users_view";
+        $data['module_view'] = "add_users_view";
         $this -> base_params($data);
     }
 
@@ -41,7 +41,7 @@ class User_Management extends Controller {
 //        $data['membership_data'] = Membership::getAll();
         $data['users'] = $user[0];
         $data['title'] = "User Management";
-        $data['settings_view'] = "add_users_view";
+        $data['module_view'] = "add_users_view";
         $data['quick_link'] = "new_user";
         $this -> base_params($data);
     }
@@ -125,9 +125,7 @@ class User_Management extends Controller {
         $data['styles'] = array("jquery-ui.css");
         $data['scripts'] = array("jquery-ui.js");
         $data['quick_link'] = "users";
-        $data['content_view'] = "settings_v";
-        $data['banner_text'] = "NQCL Settings";
-        $data['link'] = "settings_management";
+        $data['content_view'] = "admin_view";        
         if ($data['userstuff'] != "matthawi") {
             $this -> load -> view('restricted_v');
         } else {

@@ -40,19 +40,20 @@ if (isset($styles)) {
 
 </head>
 <div id="header">
-    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> 
 <param name="movie" value="<?php echo base_url().'system/solveitservicesadvert.swf'?>" />
 <embed src="<?php echo base_url().'system/solveitservicesadvert.swf'?>" width="1050" height="80" name="test1" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
-</object>
+</object> 
 </div>
 <body>
     <div id="search">
+<div id="topbanner"><img src="<?php echo base_url().'system/Images/rbdbanner-lg.png'?>"/></div>
         <?php echo form_open('home_controller/search'); ?>
-        <div id="searchcontents">
-            <div id="logo">
-                <h3><a href="<?php echo base_url() ?>" style="color: #000"><img src="<?php echo base_url().'system/Images/RBD_logo.png'?>"/> </a></h3>
+<div id="logohome">
+                <h3><a href="<?php echo base_url() ?>" style="color: #000"><img src="<?php echo base_url().'system/Images/RBD_logo_home.png'?>"/> </a></h3>
             </div>
-            <?php echo form_input(array('name' => 'q', 'id' => 'searchwhat', 'placeHolder' => 'What are you looking for? e.g. Hilton', 'value' => $search_terms, 'class' => 'searchfield')); ?>
+        <div id="searchcontents">
+               <?php echo form_input(array('name' => 'q', 'id' => 'searchwhat', 'placeHolder' => 'What are you looking for? e.g. Hilton', 'value' => $search_terms, 'class' => 'searchfield')); ?>
             <?php echo form_input(array('name' => 'r', 'id' => 'searchwhere', 'placeHolder' => 'Where is it located? e.g. Kigali', 'value' => $search_terms2, 'class' => 'searchfield')); ?>
             <?php echo form_submit(array('name' => 'search', 'value' => 'SEARCH', 'id' => 'submitsearch')); ?>
     <br />
@@ -62,9 +63,9 @@ if (isset($styles)) {
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    <span id="alotofcrap">The Official Online Business Directory</span> 
+     
         </div>
+<div id="official"><img src="<?php echo base_url().'system/Images/official.png'?>"/></div>
     <?php echo form_close(); ?>
     
     </div> 

@@ -103,7 +103,7 @@ You can manage multiple listings under one account. Add all your services and pr
 
 	<div>
 		<br />
-		<a class="greenbutton">Promote Your Business </a>
+		<a class="greenbutton" href="<?php echo base_url().'personal_controller/options' ?>">Promote Your Business </a>
 		<br />
 		<br />
 

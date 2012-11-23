@@ -21,7 +21,7 @@ class Home_Controller extends Controller {
         $data['categoryinformation'] = Categories::getName();
         $data['populars'] = Categories::getPopularCategories();
         $data['latest'] = Businesses::getLatestBusinesses();
-        $data['sponsored'] = Sponsored_Links::getAll();
+        $data['sponsored'] = Sponsored_Link::getAll();
         $data['content_view'] = "main_v";
         $data['link'] = "home";
         $this -> load -> view("template", $data);
@@ -153,8 +153,10 @@ class Home_Controller extends Controller {
 
     function advertise() {        
         $data['content_view'] = "advertise_v";
+        $data['scripts'] = array("jquery-ui.js", "dhtmlxcommon.js", "dhtmlxtabbar.js");
+        $data['styles'] = array("jquery-ui.css","dhtmlxtabbar.css");
         $data['title'] = "Rwanda Business Directory: Advertise";
-        $this -> load -> view('template_noad', $data);
+        $this -> load -> view('personal_view', $data);
     }
 
 }
