@@ -13,8 +13,7 @@
             <tr class="yellow">
                 <th>Business</th>
                 <th>Category</th>
-                <th>Owner</th>
-                <th>Coordinate</th>
+                <th>Owner</th>                
                 <th>Building</th>
                 <th>Floor</th>
                 <th>Road</th>
@@ -31,7 +30,7 @@
                         <td><?php echo $business_data -> Business_name ?></td>
                         <td><?php echo $business_data -> Categories -> Category_name ?></td>  
                         <td><?php echo $business_data -> Users -> Name ?></td>                                                
-                        <td><?php echo $business_data -> Coordinate ?></td>                       
+                                           
                         <td><?php echo $business_data -> Building ?></td>
                         <td><?php echo $business_data -> Floor ?></td>
                         <td><?php echo $business_data -> Road ?></td>

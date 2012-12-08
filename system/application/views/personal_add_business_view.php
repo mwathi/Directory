@@ -4,6 +4,11 @@ if (isset($business)) {
     $business_name = $business -> Business_name;
     $city = $business -> City;
     $coordinate = $business -> Coordinate;
+
+    $address = $business -> Address;
+    $latitude = $business -> Latitude;
+    $longitude = $business -> Longitude;
+
     $category = $business -> Category;
     $building = $business -> Building;
     $floor = $business -> Floor;
@@ -19,6 +24,9 @@ if (isset($business)) {
     $getting_there = $business -> Getting_there;
     $products_services = $business -> Products_services;
 } else {
+     $address = "";
+    $latitude = "";
+    $longitude = "";
     $business_name = "";
     $city = "";
     $coordinate = "";
@@ -47,8 +55,16 @@ foreach ($error as $e) {
     echo $e;
 };
 ?>
+
+<head>
+<link type="text/css" rel="stylesheet" href="<?php echo base_url().'system/css/style.css' ?>" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="<?php echo base_url().'system/scripts/jquery-1.5.1.min.js' ?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'system/scripts/maps.js' ?>"></script>
+</head>
+
 <input type="hidden" name="business_id" value = "<?php echo $business_id; ?>"/>
-<div class="holder" style="width: 500px">
+<div class="holder" style="width: 500px; margin-left: 8%; margin-top: 5%">
     <table>
         <tr class="yellow">
         <th class="" colspan="2">Business Details</th>
@@ -62,14 +78,6 @@ foreach ($error as $e) {
             ?></td>
         </tr>
 
-        <tr>
-            <td>Coordinates</label></td>
-            <td><?php
-
-            $data_search = array('name' => 'coordinates', 'value' => $coordinate, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
         <tr>
             <td>City</label></td>
             <td><select name="city" id="city" class="othertext">
@@ -216,3 +224,42 @@ foreach ($error as $e) {
     </table>
     </form>
     </div>
+    <div id="container_demo" style="margin-top: -900px; margin-bottom: 500px; margin-left: 50%">
+    <form class="form_list">
+        <fieldset>
+            <legend>
+                Map: User pin-pointed Coordinates:
+            </legend>
+
+            <ul>
+                <li>
+                <li>
+                    <font size="1" color="#666666"> Locate your physical address by using the controls on the left side of the map. You can zoom in to get a closer view of the location by dragging the controls (To the left of Map) upwards and vice versa</font>
+                </li>
+                    <label for="address">Address</label>
+                    <?php $data_search = array('name' => 'address', 'value' => $address, 'class' => 'othertext', 'id' => 'address');
+                        echo form_input($data_search);
+                    ?>
+                </li>
+
+                <li>
+                    <label for="lat">Latitude</label>
+                    <?php $data_search = array('name' => 'lat', 'value' => $lat, 'class' => 'othertext', 'id' => 'lat');
+                        echo form_input($data_search);
+                       ?>
+                </li>
+
+                <li>
+                    <label for="lng">Longitude</label>
+                    <?php $data_search = array('name' => 'lng', 'value' => $lng, 'class' => 'othertext', 'id' => 'lng');
+                        echo form_input($data_search);
+                    ?>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+
+    <h1>Drag the pin to automatically determine addresses and coordinates</h1>
+    <div id="map"></div>
+    <h1><font color="#D6D6D6">powered by <a href="http://www.macrosource.co.ke">macrosource</a></font></h1>
+</div>

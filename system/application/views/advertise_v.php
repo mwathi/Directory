@@ -144,6 +144,17 @@
  </td>
 </tr>
 <tr>
+    <td>Select Advertisement</td>
+    <td>
+    <select name="advertise">
+        <option value="top">Top Banner</option>
+        <option value="bottom">Bottom Banner</option>
+        <option value="featured">Featured Banner</option>
+        <option value="sponsored">Sponsored Links</option>
+    </select>
+    </td>
+</tr>
+<tr>
  <td valign="top">
   <label for="comments">Comments *</label>
  </td>

@@ -4,8 +4,12 @@ class Businesses extends Doctrine_Record {
 
     public function setTableDefinition() {
         $this -> hasColumn('Title', 'varchar', 50);
-        $this -> hasColumn('Business_name', 'varchar', 100);
-        $this -> hasColumn('Coordinate', 'varchar', 25);
+        $this -> hasColumn('Business_name', 'varchar', 100);        
+        
+        $this -> hasColumn('Latitude', 'varchar', 25);
+        $this -> hasColumn('Longitude', 'varchar', 25);
+        $this -> hasColumn('Address', 'varchar', 25);
+        
         $this -> hasColumn('City', 'int', 15);
         $this -> hasColumn('Category', 'int', 15);
         $this -> hasColumn('Image', 'varchar', 100);
@@ -22,6 +26,8 @@ class Businesses extends Doctrine_Record {
         $this -> hasColumn('Website', 'varchar', 25);
         $this -> hasColumn('Owner', 'int', 15);
         $this -> hasColumn('Getting_there', 'varchar', 400);
+        $this -> hasColumn('Facebook', 'varchar', 100);
+        $this -> hasColumn('Twitter', 'varchar', 100);
         $this -> hasColumn('Company_information', 'varchar', 400);
         $this -> hasColumn('Products_services', 'varchar', 400);
         $this -> hasColumn('Value', 'smallint', 2);

@@ -193,7 +193,7 @@
 }
 .dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tablist_line {
 	border-width:0px 0px 1px 1px;
-	width:2px !ie;
+	width:2px;
 }
 .dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tab_element{
 	padding-top:0px;
@@ -228,7 +228,7 @@
 }
 .dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tablist_line {
 	border-width:0px 1px 1px 0px;
-	width:2px !ie;
+	width:2px;
 }
 .dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tab_element{
 	padding-top:0px;

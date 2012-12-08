@@ -41,8 +41,13 @@ class Business_Management extends Controller {
 
     public function save() {
         $business_name = $this -> input -> post("business");
-        $coordinates = $this -> input -> post("coordinates");
+        
         $city = $this -> input -> post("city");
+        
+        $address = $this -> input -> post("address");
+        $latitude = $this -> input -> post("lat");
+        $longitude = $this -> input -> post("lng");
+        
         $category = $this -> input -> post("category");
         $business_id = $this -> input -> post("business_id");
         $building = $this -> input -> post("building");
@@ -54,6 +59,8 @@ class Business_Management extends Controller {
         $mobile = $this -> input -> post("mobile");
         $email = $this -> input -> post("email");
         $website = $this -> input -> post("website");
+        $facebook = $this -> input -> post("facebook");
+        $twitter = $this -> input -> post("twitter");
         $company_information = $this -> input -> post("company_information");
         $getting_there = $this -> input -> post("getting_there");
         $products_services = $this -> input -> post("products_services");
@@ -72,9 +79,14 @@ class Business_Management extends Controller {
         } else {
             $business -> Title = $business_name;
             $business -> Business_name = $business_name;
-            $business -> Coordinate = $coordinates;
+            
             $business -> Active = '1';
             $business -> City = $city;
+            
+            $business -> Address = $address;
+            $business -> Latitude = $latitude;
+            $business -> Longitude = $longitude;
+            
             $business -> Category = $category;
             $business -> Value = $membership;
             $business -> Building = $building;
@@ -83,6 +95,8 @@ class Business_Management extends Controller {
             $business -> Box = $box;
             $business -> Telephone = $telephone;
             $business -> Fax = $fax;
+            $business -> Facebook = $facebook;
+            $business -> Twitter = $twitter;
             $business -> Mobile = $mobile;
             $business -> Email = $email;
             $business -> Website = $website;
@@ -154,7 +168,7 @@ class Business_Management extends Controller {
 
     public function base_params($data) {
         $data['userstuff'] = $this -> session -> userdata('username');
-        $data['scripts'] = array("jquery-ui.js", "tab.js");
+        $data['scripts'] = array("jquery-ui.js");
         $data['styles'] = array("jquery-ui.css", "tab.css", "pagination.css");
         $data['quick_link'] = "business_management";
         $data['content_view'] = "admin_view";

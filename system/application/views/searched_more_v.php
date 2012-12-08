@@ -6,7 +6,10 @@
         <?php foreach ($results as $result): ?>
             <li>                        
                 <h4><?php echo search_highlight($result -> Name, $search_terms || $search_terms2); ?></h4><br />
-                
+                 <div id="product_logo_image">
+                    <img src="<?php echo base_url().'system/Images/'.$result->Name.'.jpg' ?>" style="width: 150px; height: 150px"/>
+                </div>
+                <div style="height: 50px"></div>
                 <span style="font-style: italic"><?php echo $result -> Category; ?><br /></span>
                 
                 <span style="font-style: italic; font-weight: bold"><?php echo $result -> Road; ?>,
@@ -21,7 +24,7 @@
                     Mobile: <?php echo $result -> Mobile; ?><br />     
                 <?
                 }
-                
+
                 if($result -> Membership >= 1){
                 //display if silver or more
                 ?>
@@ -31,13 +34,15 @@
                 Website: <?php echo $result -> Website; ?></a><br />
                 
                 <?php
-                    }//end if
+                }//end if
                 ?>
-                
+             <?php echo "Dave is a ".$result->Latitude;?>
                 <div class="map">
-                    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo $result -> Coordinate?>&amp;num=1&amp;ie=UTF8&amp;ll=<?php echo $result -> Coordinate?>&amp;spn=0.00678,0.013078&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
+               
+                <p></p>
+                    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo $result -> Latitude .",". $result -> Longitude?>&amp;num=1&amp;ie=UTF8&amp;ll=<?php echo $result -> Latitude .",". $result -> Longitude?>&amp;spn=0.00678,0.013078&amp;t=m&amp;z=9&amp;iwloc=A&amp;output=embed"></iframe><br />
                     <small>
-                        <a href="https://maps.google.com/maps?q=<?php echo $result -> Coordinate?>&amp;num=1&amp;ie=UTF8&amp;ll=<?php echo $result -> Coordinate?>&amp;spn=0.00678,0.013078&amp;t=m&amp;z=14&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a>
+                        <a href="https://maps.google.com/maps?q=<?php echo $result -> Latitude .",". $result -> Longitude?>&amp;num=1&amp;ie=UTF8&amp;ll=<?php echo $result -> Latitude .",". $result -> Longitude?>&amp;spn=0.00678,0.013078&amp;t=m&amp;z=9&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a>
                     </small>
                 </div>
                 
@@ -52,7 +57,10 @@
             <br />
             <br />
             <br />
-            
+                 <?php
+                }
+                if($result -> Membership >= 3){//silver or more
+            ?>
             <li>
                 <u>Getting There</u><br />
                 <?php echo $result -> Getting_There; ?>
@@ -60,21 +68,15 @@
             <br />
             <br />
             <br />
-            <?php
-            }
-            ?>
-            
-            <?php
-            if($result -> Membership >= 3){
-                ?>
+
             <li>
                 <u>Products and Services</u><br />
                 <?php echo $result -> Products_Services; ?>
             </li>
             
         <?php
-                }
-                endforeach
+        }
+        endforeach
         ?>
         </ul>
         </div>

@@ -42,8 +42,9 @@
                 <?php
                 }
 		?>
-    <div id="fbspace"></div>
-    <div class="fb-like" data-href="http://rbd.exquisiteartcollections.com" data-send="false" data-width="4" data-show-faces="false" data-action="like" data-font="lucida grande"b style="margin-right: -60%; margin-top: -1.5%"></div>
+    
+    
+    <div class="fb-like" data-href="http://rbd.exquisiteartcollections.com" data-send="false" data-width="4" data-show-faces="false" data-action="like" data-font="lucida grande"b style="float: right; position: relative"></div>
 	</div>
 	<div id="space"></div>
 	

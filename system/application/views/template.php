@@ -47,7 +47,7 @@ if (isset($styles)) {
 </div>
 <body>
     <div id="search">
-<div id="topbanner"><img src="<?php echo base_url().'system/Images/rbdbanner-lg.png'?>"/></div>
+<div id="topbanner" style="left: 25%"><img src="<?php echo base_url().'system/Images/rbdbanner-lg.png'?>"/></div>
         <?php echo form_open('home_controller/search'); ?>
 <div id="logohome">
                 <h3><a href="<?php echo base_url() ?>" style="color: #000"><img src="<?php echo base_url().'system/Images/RBD_logo_home.png'?>"/> </a></h3>

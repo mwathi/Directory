@@ -5,12 +5,19 @@ if (isset($business)) {
     $coordinate = $business -> Coordinate;
     $membership = $business -> Value;
     $category = $business -> Category;
+    
+    $address = $business -> Address;
+    $latitude = $business -> Latitude;
+    $longitude = $business -> Longitude;
+    
     $building = $business -> Building;
     $floor = $business -> Floor;
     $road = $business -> Road;
     $box = $business -> Box;
     $telephone = $business -> Telephone;
     $fax = $business -> Fax;
+    $twitter = $business -> Twitter;
+    $facebook = $business -> Facebook;
     $mobile = $business -> Mobile;
     $email = $business -> Email;
     $website = $business -> Website;
@@ -19,6 +26,11 @@ if (isset($business)) {
     $getting_there = $business -> Getting_there;
     $products_services = $business -> Products_services;
 } else {
+    $address = "";
+    $latitude = "";
+    $longitude = "";
+    $twitter = "";
+    $facebook = "";
     $business_name = "";
     $city = "";
     $coordinate = "";
@@ -45,176 +57,233 @@ echo validation_errors('
 ');
 ?>
 
+<head>
+<link type="text/css" rel="stylesheet" href="<?php echo base_url().'system/css/style.css' ?>" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="<?php echo base_url().'system/scripts/jquery-1.5.1.min.js' ?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'system/scripts/maps.js' ?>"></script>
+</head>
+
+
 <input type="hidden" name="business_id" value = "<?php echo $business_id; ?>"/>
-<div class="holder">
-    <table>
-        <tr class="yellow">
-        <th class="" colspan="2">Business Details</th>
-    </tr>
-        <tr>
-            <td>Business Name</td>
-            <td class="othertext"><?php
+<div class="holder" style="margin-left: 20%">
+<table class="othertext">
+<tr class="yellow">
+<th class="" colspan="2">Business Details</th>
+</tr>
+<tr>
+<td>Business Name</td>
+<td class="othertext"><?php
 
-            $data_search = array('name' => 'business', 'value' => $business_name, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
-
-        <tr>
-            <td>Coordinates</td>
-            <td><?php
-
-            $data_search = array('name' => 'coordinates', 'value' => $coordinate, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
-        <tr>
-            <td>City</td>
-            <td><select name="city" id="city" class="othertext">
-                <option value="0" selected>Select City</option>
-                <?php
-                foreach ($city_data as $city_ids) {
-                    echo "<option selected value='$city_ids->id'>$city_ids->City_name</option>";
-                }
-                ?>
-            </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Category</td>
-            <td><select name="category" id="category" class="othertext">
-                <option value="0" selected>Select Category</option>
-                <?php
-                foreach ($category_data as $category_ids) {
-                    echo "<option selected value='$category_ids->id'>$category_ids->Category_name</option>";
-                }
-                ?>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Building</td>
-            <td><?php
-
-            $data_search = array('name' => 'building', 'value' => $building, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'business', 'value' => $business_name, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Floor</td>
-            <td><?php
+<td>City</td>
+<td><select name="city" id="city" class="othertext">
+<option value="0" selected>Select City</option>
+<?php
+foreach ($city_data as $city_ids) {
+    echo "<option selected value='$city_ids->id'>$city_ids->City_name</option>";
+}
+?>
+</select>
+</td>
+</tr>
+<tr>
+<td>Category</td>
+<td><select name="category" id="category" class="othertext">
+<option value="0" selected>Select Category</option>
+<?php
+foreach ($category_data as $category_ids) {
+    echo "<option selected value='$category_ids->id'>$category_ids->Category_name</option>";
+}
+?>
+</select></td>
+</tr>
+<tr>
+<td>Building</td>
+<td><?php
 
-            $data_search = array('name' => 'floor', 'value' => $floor, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'building', 'value' => $building, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Road</td>
-            <td><?php
+<td>Facebook</td>
+<td><?php
 
-            $data_search = array('name' => 'road', 'value' => $road, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
-
-<tr>
-            <td>Box</td>
-            <td><?php
-
-            $data_search = array('name' => 'box', 'value' => $box, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'facebook', 'value' => $facebook, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Telephone</td>
-            <td><?php
+<td>Twitter</td>
+<td><?php
 
-            $data_search = array('name' => 'telephone', 'value' => $telephone, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
-
-<tr>
-            <td>Fax</td>
-            <td><?php
-
-            $data_search = array('name' => 'fax', 'value' => $fax, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'twitter', 'value' => $twitter, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Mobile</td>
-            <td><?php
+<td>Floor</td>
+<td><?php
 
-            $data_search = array('name' => 'mobile', 'value' => $mobile, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
-
-<tr>
-            <td>Email</td>
-            <td><?php
-
-            $data_search = array('name' => 'email', 'value' => $email, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'floor', 'value' => $floor, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Website</td>
-            <td><?php
+<td>Road</td>
+<td><?php
 
-            $data_search = array('name' => 'website', 'value' => $website, 'class' => 'othertext');
-            echo form_input($data_search);
-            ?></td>
-        </tr>
-        <tr>
-            <td>Company Information</td>
-            <td><?php
-
-            $data_search = array('name' => 'company_information', 'value' => $company_information, 'class' => 'othertext');
-            echo form_textarea($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'road', 'value' => $road, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Getting There</td>
-            <td><?php
+<td>Box</td>
+<td><?php
 
-            $data_search = array('name' => 'getting_there', 'value' => $getting_there, 'class' => 'othertext');
-            echo form_textarea($data_search);
-            ?></td>
-        </tr>
+$data_search = array('name' => 'box', 'value' => $box, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
 <tr>
-            <td>Products and Services</td>
-            <td><?php
+<td>Telephone</td>
+<td><?php
 
-            $data_search = array('name' => 'products_services', 'value' => $products_services, 'class' => 'othertext');
-            echo form_textarea($data_search);
-            ?></td>
-        </tr>
-        
-        <tr>
-            <td>Membership</td>
-            <td><select name="membership" id="membership" class="othertext">
-                <option value="0" selected>Select Membership</option>
-                <?php
-                foreach ($membership_data as $member) {
-                    echo "<option selected value='$member->id'>$member->Membership</option>";
-                }
-                ?>
-            </select>
-            </td>
-        </tr>
+$data_search = array('name' => 'telephone', 'value' => $telephone, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
 
+<tr>
+<td>Fax</td>
+<td><?php
 
-        <tr>
-            <td><input name="submit" type="submit" value="Save Category" class="button" style="width: 100px; height: 30px; font-size: 13px"></td>
-        </tr>
-    </table>
-    </form>
-    </div>
+$data_search = array('name' => 'fax', 'value' => $fax, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
+
+<tr>
+<td>Mobile</td>
+<td><?php
+
+$data_search = array('name' => 'mobile', 'value' => $mobile, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
+
+<tr>
+<td>Email</td>
+<td><?php
+
+$data_search = array('name' => 'email', 'value' => $email, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
+
+<tr>
+<td>Website</td>
+<td><?php
+
+$data_search = array('name' => 'website', 'value' => $website, 'class' => 'othertext');
+echo form_input($data_search);
+?></td>
+</tr>
+<tr>
+<td>Company Information</td>
+<td><?php
+
+$data_search = array('name' => 'company_information', 'value' => $company_information, 'class' => 'othertext');
+echo form_textarea($data_search);
+?></td>
+</tr>
+
+<tr>
+<td>Located close to</td>
+<td><?php
+
+$data_search = array('name' => 'getting_there', 'value' => $getting_there, 'class' => 'othertext');
+echo form_textarea($data_search);
+?></td>
+</tr>
+
+<tr>
+<td>Products and Services</td>
+<td><?php
+
+$data_search = array('name' => 'products_services', 'value' => $products_services, 'class' => 'othertext');
+echo form_textarea($data_search);
+?></td>
+</tr>
+
+<tr>
+<td>Membership</td>
+<td><select name="membership" id="membership" class="othertext">
+<option value="0" selected>Select Membership</option>
+<?php
+foreach ($membership_data as $member) {
+    echo "<option selected value='$member->id'>$member->Membership</option>";
+}
+?>
+</select>
+</td>
+</tr>
+
+<tr>
+<td><input name="submit" type="submit" value="Save Category" class="button" style="width: 100px; height: 30px; font-size: 13px"></td>
+</tr>
+</table>
+</form>
+
+</div>
+<div id="container_demo" style="margin-top: -900px; margin-bottom: 500px; margin-left: 50%">
+	<form class="form_list">
+		<fieldset>
+			<legend>
+				Map Demo: User pin-pointed Coordinates:
+			</legend>
+
+			<ul>
+				<li>
+				<li>
+					<font size="1" color="#666666"> Locate your physical address by using the controls on the left side of the map. You can zoom in to get a closer view of the location by dragging the controls (To the left of Map) upwards and vice versa</font>
+				</li>
+				    <label for="address">Address</label>
+	                <?php $data_search = array('name' => 'address', 'value' => $address, 'class' => 'othertext', 'id' => 'address');
+                        echo form_input($data_search);
+                    ?>
+				</li>
+
+				<li>
+					<label for="lat">Latitude</label>
+				    <?php $data_search = array('name' => 'lat', 'value' => $lat, 'class' => 'othertext', 'id' => 'lat');
+                        echo form_input($data_search);
+                       ?>
+				</li>
+
+				<li>
+					<label for="lng">Longitude</label>
+					<?php $data_search = array('name' => 'lng', 'value' => $lng, 'class' => 'othertext', 'id' => 'lng');
+                        echo form_input($data_search);
+                    ?>
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+
+	<h1>Drag the pin to automatically determine addresses and coordinates</h1>
+	<div id="map"></div>
+	<h1><font color="#D6D6D6">powered by <a href="http://www.macrosource.co.ke">macrosource</a></font></h1>
+</div>

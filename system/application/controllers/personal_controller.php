@@ -47,7 +47,10 @@ class Personal_Controller extends Controller {
     public function save() {
         $owner = $this -> session -> userdata('userid');
         $business_name = $this -> input -> post("business");
-        $coordinates = $this -> input -> post("coordinates");
+
+        $address = $this -> input -> post("address");
+        $latitude = $this -> input -> post("lat");
+        $longitude = $this -> input -> post("lng");
         $city = $this -> input -> post("city");
         $category = $this -> input -> post("category");
         $business_id = $this -> input -> post("business_id");
@@ -73,7 +76,7 @@ class Personal_Controller extends Controller {
             $this -> personal_business_listing();
         } else {
 
-            $config['upload_path'] = './';
+            $config['upload_path'] = './system/Images/';
             $config['allowed_types'] = 'jpeg|jpg';
             $config['max_size'] = '10000';
 
@@ -93,6 +96,9 @@ class Personal_Controller extends Controller {
             $business -> Coordinate = $coordinates;
             $business -> City = $city;
             $business -> Category = $category;
+            $business -> Address = $address;
+            $business -> Latitude = $latitude;
+            $business -> Longitude = $longitude;
             $business -> Building = $building;
             $business -> Floor = $floor;
             $business -> Road = $road;
@@ -164,7 +170,7 @@ class Personal_Controller extends Controller {
             $this -> base_params($data);
         }
     }
-    
+
     public function options() {
         if ($this -> session -> userdata('username') == NULL) {
             $this -> load -> view('restricted_v');
@@ -188,7 +194,7 @@ class Personal_Controller extends Controller {
 
     public function base_params($data) {
         $data['scripts'] = array("jquery-ui.js", "dhtmlxcommon.js", "dhtmlxtabbar.js");
-        $data['styles'] = array("jquery-ui.css","dhtmlxtabbar.css");
+        $data['styles'] = array("jquery-ui.css", "dhtmlxtabbar.css");
         $this -> load -> view('personal_view', $data);
     }//end base_params
 

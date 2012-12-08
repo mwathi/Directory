@@ -26,6 +26,9 @@ class Search extends Model {
         b.website AS Website,
         b.products_services AS Products,
         b.value AS Membership,
+        b.address AS Address,
+        b.longitude AS Longitude,
+        b.latitude AS Latitude,
         c.category_name 
 		AS Category,d.city_name AS Location FROM businesses b, 
 		categories c, cities d WHERE  (b.business_name LIKE ?  or 
@@ -54,6 +57,9 @@ class Search extends Model {
         b.email AS Email,
         b.website AS Website,
         b.value AS Membership,
+        b.address AS Address,
+        b.longitude AS Longitude,
+        b.latitude AS Latitude,
         c.category_name 
         AS Category,d.city_name AS Location FROM businesses b, 
         categories c, cities d WHERE  (b.business_name LIKE ?)  and b.category = c.id and active = 0 and b.city = d.id LIMIT 1";
